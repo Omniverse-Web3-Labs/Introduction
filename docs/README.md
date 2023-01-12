@@ -1,10 +1,10 @@
 # Tutorial
 *This document helps beginners taste the basic functions of `O20k` step by step.*  
 
-- The full souce code of the related repo of the tools is [here](../src/omniverse-swap-tools/). The original souce code repo is [here](https://github.com/virgil2019/omniverse-swap-tools)
+- The full souce code of the related repo of the tools is [here](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools).  
 - The EVM tools can be found [here](https://github.com/virgil2019/omniverse-evm/tree/feature-substrate-no-payload/contracts), and remember to go there to execute EVM related operetions. This will be integrated into a whole tool.  
-- In this stage, we have designed and made out an intuitive [prototype](https://github.com/xiyu1984/o-amm/blob/main/solving.py) of the Omniverse AMM algorithm.  
-- Besides, we also provide an [on-chain prototype](https://github.com/xiyu1984/O-AMM-ParaSim) for the `off-chain calculation, and on-chain verification` based on a specific verifiable computation, which can be tested manually through an [operation tutorial](https://github.com/xiyu1984/O-AMM-ParaSim/tree/main/off-chain-calc).
+- In this stage, we have designed and made out an intuitive [prototype](https://github.com/Omniverse-Web3-Labs/o-amm) of the Omniverse AMM algorithm.  
+- Besides, we also provide an [on-chain prototype](https://github.com/Omniverse-Web3-Labs/O-AMM-ParaSim) for the `off-chain calculation, and on-chain verification` based on a specific verifiable computation, which can be tested manually through an [operation tutorial](https://github.com/Omniverse-Web3-Labs/O-AMM-ParaSim/tree/main/off-chain-calc).
 
 
 ## Index
@@ -50,9 +50,9 @@ The Omniverse tokens are also deployed as smart contracts on some EVM chains.
     - "Y": [0x069c23c166Edff0398958C261D3968713B21139c](https://testnet.bscscan.com/address/0x069c23c166Edff0398958C261D3968713B21139c),
 
 ## Tools Install
-The Omniverse operation tools can be found [here](https://github.com/virgil2019/omniverse-swap-tools).  
-* Go to the [repo of the tools](../src//omniverse-swap-tools/).
-* If you do not clone the whole hackathon repo, you can just clone the repo [here](https://github.com/virgil2019/omniverse-swap-tools/tree/main). 
+The Omniverse operation tools can be found [here](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools).  
+* Go to the [repo of the tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools).
+* If you do not clone the whole hackathon repo, you can just clone the repo. 
 * Install the dependent packages.  
     ```sh
     npm install
@@ -87,7 +87,7 @@ Before using the new account created by [Create Account](#create-account) in the
 
 ### Check the Account
 You can check the information of the account with the `secret seed` mentioned at [previous chapter](#create-account).  
-* Create a new file named `.secret` at the same path of [.secret-example](../src/omniverse-swap-tools/omniverse-helper/.secret-example), and set the `secret seed` in it, the content of which is something as below:  
+* Create a new file named `.secret` at the same path of [.secret-example](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/.secret-example), and set the `secret seed` in it, the content of which is something as below:  
     ```json
     {
         "sks": [
