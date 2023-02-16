@@ -18,7 +18,7 @@
 ## Environment
 * [Connection](#connection)
 * [Deployment](#deployment)
-    * [`O20k` Parachain](#parachain-of-omniverse-dlt)
+    * [Parachain of Omniverse DLT](#parachain-of-omniverse-dlt)
     * [EVM chains](#evm-chains)
 * [Smart contracts on EVM Chains](#evm-chains)
 * [Get Gas Token](#get-gas-tokens)
@@ -37,10 +37,9 @@ To make it convenient, we have already deployed one kind of Omniverse Tokens, to
 <!-- ***Note that the precision of the Omniverse tokens is $10^{0}$.*** -->
 
 #### Parachain of `Omniverse DLT`
-* Pallet `OmniverseFactory` is mainly used to make transactions:  
+* Pallet `Assets` is mainly used to make transactions:  
     * The `tokenId` of Token $skywalker$ is `skywalker`
-* Pallet `OmniverseSwap` is mainly used to make exchanges:
-    * The `tradingPair` of the specific swapping pool is `X2Y`.
+* Pallet `OmniverseProtocol` is mainly used to manage account, verify omniverse transactions
 
 #### EVM chains
 The Omniverse tokens are also deployed as smart contracts on some EVM chains.  
@@ -72,6 +71,7 @@ As we mentioned above, the Omniverse account is equivalent to the native account
 <p align='center'>Figure.2 Create an Omniverse account through Polkadot.js/apps</p>  
 
 ***Note that***:  
+*For current versions of polkadot apps, you should change an option to enable this function: Settings -> General -> account options -> Allow local in-brower account storage*
 1. Choose `Raw seed`
 2. Choose `ECDSA (Non BTC/ETH compatible)` in `keypair crypto type`
 3. Record the value of the `secret seed`, which will be used in the Omniverse account tool.
@@ -92,8 +92,7 @@ You can check the information of the account with the `secret seed` mentioned at
             "b4c88b446aa0923be87ca6e02e4c767bd6xxxxxxxxxxxxxxxxxxxxxxxxxx",
             "a4c88b446aa0923be87ca6e02e4c767bd6xxxxxxxxxxxxxxxxxxxxxxxxxx"
         ],
-        "index": 0,
-        "mpc": "0x9b0bc430a57fbfab286eaeffd22d1f05bc415c6f3c19d4c4880c3e1f80e5a7a65e36a3f960adda4670a690098a10ad98f03111d4085a937325aa468072dcf294"
+        "index": 0
     }
     ```
     * `sks` are secret keys of the Omniverse Accounts. Normally, we need to create two keys that one is the sender and the other is the receiver, as we will do [Omniverse Transferring](#make-transaction-of-omniverse-token) later.
@@ -112,7 +111,7 @@ You can check the information of the account with the `secret seed` mentioned at
 ![img](./assets/get-account-info.png)  
 
 ## Omniverse Token Protocol
-The operations related to the Omniverse Token Protocol(`OTP`) include `Claim`, `balance of`, and `transfer`.  
+The operations related to the Omniverse Token Protocol(`OTP`) include `claim`, `balance of`, and `transfer`.  
 * [Claim](#claim)
 * [Check the balance](#check-the-balance)
 * [Transaction](#make-transaction-of-omniverse-token)
@@ -123,7 +122,7 @@ The operations related to the Omniverse Token Protocol(`OTP`) include `Claim`, `
 * `Claim` Token $skywalker$ to operation Account:  
     ```sh
     # -c, --claim <tokenId>
-    node index.js -c X
+    node index.js -c skywalker
     ```
 
 ### Check the balance
@@ -171,7 +170,7 @@ The operations related to the Omniverse Token Protocol(`OTP`) include `Claim`, `
     * Go to [EVM tools path](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant/contracts) first, and follow the tutorial to check what happened on EVM. 
     * Check `balance of` Token $skywalker$ of related account on EVM chains:  
     * You can check the transaction on EVM chains at skywalker [0x557A27534c51A29F418251C8f409e17c94d2366b](https://testnet.bscscan.com/address/0x557A27534c51A29F418251C8f409e17c94d2366b)  as follows:  
-    ![img](./assets/token-X.png)
+    ![img](./assets/token-skywalker.png)
 
 ## Advanced Features
 We also provided an advanced feature:
