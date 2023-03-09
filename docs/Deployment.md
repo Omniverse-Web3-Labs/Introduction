@@ -6,7 +6,7 @@ In this tutorial, you will use these repos:
 - [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm): Contains the contract code for EVM-compatible chains.  
 - [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap): Contains the pallets for substrate.  
 - [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer): The synchronizer responsible for synchronizing messages between chains.
-- [omniverse-swap-tools](git@github.com:Omniverse-Web3-Labs/omniverse-swap-tools.git): The tool to interact with substrate.
+- [omniverse-swap-tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools): The tool to interact with substrate.
 
 ## Prerequisites
 - Truffle >= v5.7.9
@@ -49,14 +49,18 @@ remixd -s <WORK_DIR>
 
 - Open workspace
 Click `-connect to localhost-` on Remix.
-
-Then click `Connect` in the popup window.
-
-#### Deploy contracts
-- Open files `SkywalkerFungible` and `libraries/OmniverseProtocolHelper.sol`.
 [image here]
 
-- Compile the files respectively by choosing one file and clicking the `compile` button
+Then click `Connect` in the popup window.
+[image here]
+
+#### Deploy contracts
+- Open files
+Open files `SkywalkerFungible` and `libraries/OmniverseProtocolHelper.sol`.
+[image here]
+
+- Compile files
+Compile the files respectively by choosing one file and clicking the `compile` button
 [image here]
 
 - Deploy `SkywalkerFungible`
@@ -77,6 +81,9 @@ You must input the chain id, which indicates on which chain the contract will be
 
 ### Synchronizer
 #### Clone `omniverse-synchronizer`
+```
+git clone git@github.com:Omniverse-Web3-Labs/omniverse-synchronizer.git
+```
 
 #### Install
 ```
@@ -91,8 +98,26 @@ Open the file `config/default.json`
 [image here]
 
 ## Initialization
-### `Omniverse-evm`
+### `Substrate`
 
+
+### `Omniverse-evm`
+#### Set cooling down time
+The cooling down time is used to limit the speed of an omniverse transaction, in order that there is enough time to deal with conflicts.
+
+Call the method `setCoolingDownTime` of `SkywalkerFungible` in Remix, with argument `10`, which means the cooling down time is 10s.
+
+[image here]
+
+#### Set members
+The members determine which chains are supported by the omniverse token.
+
+Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `SUBSTRATE-TOKEN-ID`.
+
+[image here]
+
+### `Substrate`
+#### Set metadata
 
 #### Start
 ```
@@ -101,3 +126,8 @@ npm src/main.js
 
 You can see outputs on the screen like this
 [image here]
+
+
+
+#### Set base URI
+The base URI is used to index the metadata of 
