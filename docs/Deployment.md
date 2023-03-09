@@ -16,10 +16,79 @@ In this tutorial, you will use these repos:
 - Metamask
 - Remix
 - git
-[Prerequisites for substrate]
+- build-essential
+- make
+- llvm
+- clang
+- curl
+- libssl-dev
+- protobuf-compiler
 
 ## Deployment
+
 ### Substrate
+
+You can start a local Omniverse-DLT substrate node.
+
+#### To compile the Omniverse-DLT Substrate node
+
+  1. Open a terminal shell on your computer.
+  
+  2. Clone the node repository by running the following command:
+
+  ```bash
+  git clone https://github.com/Omniverse-Web3-Labs/omniverse-swap.git
+  ```
+
+  3. Change to the root of the node template directory by running the following command:
+
+  ```bash
+  cd omniverse-swap
+  ```
+
+  4. Compile the node template by running the following command:
+
+  ```bash
+  cargo build --release  
+  ```
+
+#### start the local Omniverse-DLT node
+
+After your node compiles, you are ready to start exploring what it does using [polkadot-js](https://polkadot.js.org/) or [contract_ui](https://contracts-ui.substrate.io/).
+
+  1. Open a terminal shell.
+
+  2. Change to the root directory where you compiled the Omniverse-DLT node.
+
+  3. Start the node in development mode by running the following command:
+
+  ```bash
+  ./target/release/node-template  --dev
+  ```
+
+  4. Verify your node is up and running successfully by reviewing the output displayed in the terminal. The terminal should display output similar to this:
+
+  ```bash
+  2023-03-08 23:11:50 Substrate Node
+  2023-03-08 23:11:50 ✌️  version 4.0.0-dev-f6dccb957e1
+  2023-03-08 23:11:50 ❤️  by Substrate DevHub <https://github.com/substrate-developer-hub>, 2017-2023
+  2023-03-08 23:11:50 📋 Chain specification: Development
+  2023-03-08 23:11:50 🏷  Node name: jittery-bridge-0008
+  2023-03-08 23:11:50 👤 Role: AUTHORITY
+  2023-03-08 23:11:50 💾 Database: RocksDb at ./data/chains/dev/db/full
+  2023-03-08 23:11:50 ⛓  Native runtime: node-template-100 (node-template-1.tx1.au1)
+  2023-03-08 23:11:51 Using default protocol ID "sup" because none is configured in the chain specs
+  2023-03-08 23:11:51 🏷  Local node identity is: 12D3KooWDUSyMnSB3Nb3XMe2vqdd89sKWTNx5BWMWi82gCGcy1tA
+  ...
+  ...
+  ...
+  ...
+  2023-03-08 23:11:56 💤 Idle (0 peers), best: #21499 (0x2b15…a013), finalized #21497 (0xb0aa…0edb), ⬇ 0 ⬆ 0
+  ```
+  If the number after `finalized` is increasing, your blockchain is producing new blocks and reaching consensus about the state they describe.
+  
+  5. Keep the terminal that displays the node output open to continue.
+
 
 ### EVM-compatible chain
 You can deploy the contracts on any EVM-compatible chain, but let us use Goerli as example. Here I assume you are familiar with Ethereum, at least knowing how to crate an account and receiving some tokens from faucet.
@@ -71,9 +140,6 @@ Choose the environment as `Injected Provider - MetaMask` and choose the contract
 
 You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `Deploy` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.
 [image here]
-
-### Substrate
-[Add it here]
 
 ### Synchronizer
 #### Clone `omniverse-synchronizer`
