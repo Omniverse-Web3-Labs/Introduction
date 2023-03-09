@@ -91,8 +91,8 @@ After the node is compiled, follow the steps below to run the node:
 Now, you can start exploring what it does using [polkadot-js](https://polkadot.js.org/) or [contract_ui](https://contracts-ui.substrate.io/)
 
 #### Create token
-Open `polkadot.js apps` and connect to the node you launched. Navigate to page `Developer->Extrinsics`, Select the module `assets` and method `createToken`.
-![create token](./assets/deployment/create token.png)
+Open `polkadot.js apps` and connect to the node you launched. Navigate to page `Developer->Extrinsics`, Select the module `assets` and method `createToken`.  
+![create token](./assets/deployment/create%20token.png)
 
 - ownerPk: The omniverse address of the owner of the token
 - tokenId: The token identity
@@ -126,7 +126,7 @@ remixd -s <WORK_DIR>
 
 - Open workspace  
 Click `-connect to localhost-` on Remix.  
-![connect to localhost](./assets/deployment/connect to localhost.png)
+![connect to localhost](./assets/deployment/connect%20to%20localhost.png)
 
 Then click `Connect` in the popup window.  
 ![connect](./assets/deployment/connect.png)
@@ -134,7 +134,7 @@ Then click `Connect` in the popup window.
 #### Deploy contracts
 - Open files  
 Open files `SkywalkerFungible` and `libraries/OmniverseProtocolHelper.sol`.
-![open files](./assets/deployment/open files.png)
+![open files](./assets/deployment/open%20files.png)
 
 - Compile files  
 Compile the files respectively by choosing one file and clicking the `compile` button, or press `ctrl` + `s`.
@@ -195,14 +195,15 @@ The cooling down time is used to limit the speed of an omniverse transaction, in
 
 Call the method `setCoolingDownTime` of `SkywalkerFungible` in Remix, with argument `10`, which means the cooling down time is 10s.
 
-![set cooling down](./assets/deployment/set cooling down.png)
+![set cooling down](./assets/deployment/set%20cooling%20down.png)
 
 #### Set members
 Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, <SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `<SUBSTRATE-TOKEN-ID>`.
 
-![set members evm](./assets/deployment/set members evm.png)
+![set members evm](./assets/deployment/set%20members%20evm.png)
 
 ## Experience
+See the [tutorial](./README.md) for how to use Omniverse tokens.
 
 ## Addition
 If you want to deploy an Omniverse NFT, just replace `SkywalkerFungible` with `SkywalkerNonFungible` for EVM-compatible chains, and replace `assets` with `uniques` for Substrate, and do some extra work.
