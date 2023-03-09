@@ -6,14 +6,13 @@ In this tutorial, you will use these repos:
 - [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm): Contains the contract code for EVM-compatible chains.  
 - [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap): Contains the pallets for Substrate.  
 - [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer): The synchronizer responsible for synchronizing messages between chains.
-- [omniverse-swap-tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools): The tool to interact with Substrate.
 
 ## Prerequisites
 - Truffle >= v5.7.9
 - Ganache >= v7.7.5(If you want to run tests for `omniverse-evm`)
 - Node >= v18.12.1
 - NPM >= 8.19.2
-- Metamask
+- MetaMask
 - Remix
 - git
 - build-essential
@@ -91,6 +90,13 @@ After the node is compiled, follow the steps below to run the node:
 
 Now, you can start exploring what it does using [polkadot-js](https://polkadot.js.org/) or [contract_ui](https://contracts-ui.substrate.io/)
 
+#### Create token
+Open `polkadot.js apps` and connect to the node you launched. Navigate to page `Developer->Extrinsics`, Select the module `assets` and method `createToken`.
+![create token](./assets/deployment/create token.png)
+
+- ownerPk: The omniverse address of the owner of the token
+- tokenId: The token identity
+- members: The members supported by the token, it is optional and can be set later
 
 ### EVM-compatible chain
 You can deploy the contracts on any EVM-compatible chain, but let us use Goerli as example. Here I assume you are familiar with Ethereum, at least knowing how to create an account and receiving some tokens from faucet.
@@ -102,7 +108,7 @@ git clone git@github.com:Omniverse-Web3-Labs/omniverse-evm.git
 ```
 
 #### Launch Remix
-- Open the website  
+- Open the Remix  
 Open the Chrome, navigate to the address `https://remix.ethereum.org`
 
 - Install Remixd  
@@ -116,36 +122,36 @@ npm install -g @remix-project/remixd
 ```
 remixd -s <WORK_DIR>
 ```
-`<WORK_DIR>` is specified above
+`<WORK_DIR>` is your working directory
 
 - Open workspace  
 Click `-connect to localhost-` on Remix.  
-[image here]
+![connect to localhost](./assets/deployment/connect to localhost.png)
 
 Then click `Connect` in the popup window.  
-[image here]
+![connect](./assets/deployment/connect.png)
 
 #### Deploy contracts
 - Open files  
 Open files `SkywalkerFungible` and `libraries/OmniverseProtocolHelper.sol`.
-[image here]
+![open files](./assets/deployment/open files.png)
 
 - Compile files  
-Compile the files respectively by choosing one file and clicking the `compile` button
-[image here]
+Compile the files respectively by choosing one file and clicking the `compile` button, or press `ctrl` + `s`.
+![compile](./assets/deployment/compile.png)
 
 - Deploy `SkywalkerFungible`  
-Choose the network as `Georli` and switch the account with witch you will deploy the contract.
-[image here]
+Choose the network as `Goerli` and switch the account with witch you will deploy the contract.
+![metamask](./assets/deployment/metamask.png)
 
 Enter the `Deploy` page  
-[image here]
+![deploy](./assets/deployment/deploy.png)
 
 Choose the environment as `Injected Provider - MetaMask` and choose the contract as `SkywalkerFungible`  
-[image here]
+![environment](./assets/deployment/environment.png)
 
-You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `Deploy` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
-[image here]
+You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `transact` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
+![transact](./assets/deployment/transact.png)
 
 ### Synchronizer
 #### Clone `omniverse-synchronizer`
@@ -163,7 +169,7 @@ npm install
 - Open the file `config/default.json`
 - Set the address of the contract `SkywalkerFungible` deployed above to the field `GOERLI`.`skywalkerFungibleContractAddress`.
 - Set the node address of your substrate node to the field `SUBSTRATE`.`nodeAddress`.
-[image here]
+![config](./assets/deployment/config.png)
 
 #### Launch
 ```
@@ -171,16 +177,17 @@ npm src/main.js
 ```
 
 You can see outputs on the screen like this  
-[image here]
+![launch](./assets/deployment/launch.png)
 
 ## Initialization
 ### `Substrate`
 #### Set members
 The members determine which chains are supported by the omniverse token.
 
-Call the method `setMembers` of the module `assets` using the account which is the owner of the token. The argument include all members of the token.
+*This step can be ignored, if the members have been set in `createToken`*
 
-[image here]
+Call the method `setMembers` of the module `assets` using the account which is the owner of the token. The argument include all members of the token.
+![set members](./assets/deployment/set members.png)
 
 ### `Omniverse-evm`
 #### Set cooling down time
@@ -188,12 +195,12 @@ The cooling down time is used to limit the speed of an omniverse transaction, in
 
 Call the method `setCoolingDownTime` of `SkywalkerFungible` in Remix, with argument `10`, which means the cooling down time is 10s.
 
-[image here]
+![set cooling down](./assets/deployment/set cooling down.png)
 
 #### Set members
-Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `SUBSTRATE-TOKEN-ID`.
+Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, <SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `<SUBSTRATE-TOKEN-ID>`.
 
-[image here]
+![set members evm](./assets/deployment/set members evm.png)
 
 ## Experience
 
