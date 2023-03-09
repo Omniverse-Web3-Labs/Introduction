@@ -109,49 +109,49 @@ git clone git@github.com:Omniverse-Web3-Labs/omniverse-evm.git
 
 #### Launch Remix
 - Open the Remix  
-Open the Chrome, navigate to the address `https://remix.ethereum.org`
+  Open the Chrome, navigate to the address `https://remix.ethereum.org`
 
 - Install Remixd  
-Remixd is an NPM module that intends to be used with Remix IDE web and desktop applications. It establishes a two-way websocket connection between the local computer and Remix IDE for a particular project directory.
+  Remixd is an NPM module that intends to be used with Remix IDE web and desktop applications. It establishes a two-way websocket connection between the local computer and Remix IDE for a particular project directory.
 
-```
-npm install -g @remix-project/remixd
-```
+  ```
+  npm install -g @remix-project/remixd
+  ```
 
 - Start remixd
-```
-remixd -s <WORK_DIR>
-```
+  ```
+  remixd -s <WORK_DIR>
+  ```
 `<WORK_DIR>` is your working directory
 
 - Open workspace  
-Click `-connect to localhost-` on Remix.  
-![connect to localhost](./assets/deployment/connect%20to%20localhost.png)
+  Click `-connect to localhost-` on Remix.  
+  ![connect to localhost](./assets/deployment/connect%20to%20localhost.png)
 
-Then click `Connect` in the popup window.  
-![connect](./assets/deployment/connect.png)
+  Then click `Connect` in the popup window.  
+  ![connect](./assets/deployment/connect.png)
 
 #### Deploy contracts
 - Open files  
-Open files `SkywalkerFungible` and `libraries/OmniverseProtocolHelper.sol`.
-![open files](./assets/deployment/open%20files.png)
+  Open `SkywalkerFungible.sol` and `libraries/OmniverseProtocolHelper.sol`.
+  ![open files](./assets/deployment/open%20files.png)
 
 - Compile files  
-Compile the files respectively by choosing one file and clicking the `compile` button, or press `ctrl` + `s`.
-![compile](./assets/deployment/compile.png)
+  Compile the files respectively by choosing one file and clicking the `compile` button, or press `ctrl` + `s`.
+  ![compile](./assets/deployment/compile.png)
 
 - Deploy `SkywalkerFungible`  
-Choose the network as `Goerli` and switch the account with witch you will deploy the contract.
-![metamask](./assets/deployment/metamask.png)
+  Choose the network as `Goerli` and switch the account with witch you will deploy the contract.  
+  ![metamask](./assets/deployment/metamask.png)
 
-Enter the `Deploy` page  
-![deploy](./assets/deployment/deploy.png)
+  Enter the `Deploy` page  
+  ![deploy](./assets/deployment/deploy.png)
 
-Choose the environment as `Injected Provider - MetaMask` and choose the contract as `SkywalkerFungible`  
-![environment](./assets/deployment/environment.png)
+  Choose the environment as `Injected Provider - MetaMask` and choose the contract as `SkywalkerFungible`  
+  ![environment](./assets/deployment/environment.png)
 
-You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `transact` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
-![transact](./assets/deployment/transact.png)
+  You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `transact` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
+  ![transact](./assets/deployment/transact.png)
 
 ### Synchronizer
 #### Clone `omniverse-synchronizer`
