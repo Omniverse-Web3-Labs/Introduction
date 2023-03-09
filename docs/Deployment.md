@@ -122,7 +122,7 @@ git clone git@github.com:Omniverse-Web3-Labs/omniverse-evm.git
   ```
   remixd -s <WORK_DIR>
   ```
-`<WORK_DIR>` is your working directory
+  `<WORK_DIR>` is your working directory
 
 - Open workspace  
   Click `-connect to localhost-` on Remix.  
@@ -180,7 +180,7 @@ You can see outputs on the screen like this
 ![launch](./assets/deployment/launch.png)
 
 ## Initialization
-### `Substrate`
+### Substrate
 #### Set members
 The members determine which chains are supported by the omniverse token.
 
@@ -189,7 +189,7 @@ The members determine which chains are supported by the omniverse token.
 Call the method `setMembers` of the module `assets` using the account which is the owner of the token. The argument include all members of the token.
 ![set members](./assets/deployment/set members.png)
 
-### `Omniverse-evm`
+### EVM-compatible chain
 #### Set cooling down time
 The cooling down time is used to limit the speed of an omniverse transaction, in order that there is enough time to deal with conflicts.
 
@@ -208,12 +208,12 @@ See the [tutorial](./README.md) for how to use Omniverse tokens.
 ## Addition
 If you want to deploy an Omniverse NFT, just replace `SkywalkerFungible` with `SkywalkerNonFungible` for EVM-compatible chains, and replace `assets` with `uniques` for Substrate, and do some extra work.
 
-### `Substrate`
+### Substrate
 #### Set collection metadata
 
 #### Set metadata
 
-### `EVM`
+### EVM-compatible chains
 #### Set base URI
 The base URI is used to index the metadata of NFT.
 
