@@ -4,9 +4,9 @@ From this tutorial, you can learn how to deploy an Omniverse FT or NFT, which al
 
 In this tutorial, you will use these repos:
 - [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm): Contains the contract code for EVM-compatible chains.  
-- [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap): Contains the pallets for substrate.  
+- [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap): Contains the pallets for Substrate.  
 - [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer): The synchronizer responsible for synchronizing messages between chains.
-- [omniverse-swap-tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools): The tool to interact with substrate.
+- [omniverse-swap-tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools): The tool to interact with Substrate.
 
 ## Prerequisites
 - Truffle >= v5.7.9
@@ -28,7 +28,7 @@ In this tutorial, you will use these repos:
 
 ### Substrate
 
-You can start a local Omniverse-DLT substrate node.
+You can start a local Omniverse-DLT Substrate node.
 
 #### To compile the Omniverse-DLT Substrate node
 
@@ -52,9 +52,9 @@ You can start a local Omniverse-DLT substrate node.
   cargo build --release  
   ```
 
-#### start the local Omniverse-DLT node
+#### Start the local Omniverse-DLT node
 
-After your node compiles, you are ready to start exploring what it does using [polkadot-js](https://polkadot.js.org/) or [contract_ui](https://contracts-ui.substrate.io/).
+After the node is compiled, follow the steps below to run the node:
 
   1. Open a terminal shell.
 
@@ -89,9 +89,11 @@ After your node compiles, you are ready to start exploring what it does using [p
   
   5. Keep the terminal that displays the node output open to continue.
 
+Now, you can start exploring what it does using [polkadot-js](https://polkadot.js.org/) or [contract_ui](https://contracts-ui.substrate.io/)
+
 
 ### EVM-compatible chain
-You can deploy the contracts on any EVM-compatible chain, but let us use Goerli as example. Here I assume you are familiar with Ethereum, at least knowing how to crate an account and receiving some tokens from faucet.
+You can deploy the contracts on any EVM-compatible chain, but let us use Goerli as example. Here I assume you are familiar with Ethereum, at least knowing how to create an account and receiving some tokens from faucet.
 
 #### Clone omniverse-evm
 Enter your work directory, let's say `<WORK_DIR>`, input the code
@@ -100,10 +102,10 @@ git clone git@github.com:Omniverse-Web3-Labs/omniverse-evm.git
 ```
 
 #### Launch Remix
-- Open the website
+- Open the website  
 Open the Chrome, navigate to the address `https://remix.ethereum.org`
 
-- Install Remixd
+- Install Remixd  
 Remixd is an NPM module that intends to be used with Remix IDE web and desktop applications. It establishes a two-way websocket connection between the local computer and Remix IDE for a particular project directory.
 
 ```
@@ -116,33 +118,33 @@ remixd -s <WORK_DIR>
 ```
 `<WORK_DIR>` is specified above
 
-- Open workspace
-Click `-connect to localhost-` on Remix.
+- Open workspace  
+Click `-connect to localhost-` on Remix.  
 [image here]
 
-Then click `Connect` in the popup window.
+Then click `Connect` in the popup window.  
 [image here]
 
 #### Deploy contracts
-- Open files
+- Open files  
 Open files `SkywalkerFungible` and `libraries/OmniverseProtocolHelper.sol`.
 [image here]
 
-- Compile files
+- Compile files  
 Compile the files respectively by choosing one file and clicking the `compile` button
 [image here]
 
-- Deploy `SkywalkerFungible`
+- Deploy `SkywalkerFungible`  
 Choose the network as `Georli` and switch the account with witch you will deploy the contract.
 [image here]
 
-Enter the `Deploy` page
+Enter the `Deploy` page  
 [image here]
 
-Choose the environment as `Injected Provider - MetaMask` and choose the contract as `SkywalkerFungible`
+Choose the environment as `Injected Provider - MetaMask` and choose the contract as `SkywalkerFungible`  
 [image here]
 
-You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `Deploy` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.
+You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `Deploy` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
 [image here]
 
 ### Synchronizer
@@ -158,14 +160,27 @@ npm install
 ```
 
 #### Change configuration
-Open the file `config/default.json`
+- Open the file `config/default.json`
 - Set the address of the contract `SkywalkerFungible` deployed above to the field `GOERLI`.`skywalkerFungibleContractAddress`.
 - Set the node address of your substrate node to the field `SUBSTRATE`.`nodeAddress`.
 [image here]
 
+#### Launch
+```
+npm src/main.js
+```
+
+You can see outputs on the screen like this  
+[image here]
+
 ## Initialization
 ### `Substrate`
+#### Set members
+The members determine which chains are supported by the omniverse token.
 
+Call the method `setMembers` of the module `assets` using the account which is the owner of the token. The argument include all members of the token.
+
+[image here]
 
 ### `Omniverse-evm`
 #### Set cooling down time
@@ -176,24 +191,24 @@ Call the method `setCoolingDownTime` of `SkywalkerFungible` in Remix, with argum
 [image here]
 
 #### Set members
-The members determine which chains are supported by the omniverse token.
-
 Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `SUBSTRATE-TOKEN-ID`.
 
 [image here]
 
+## Experience
+
+## Addition
+If you want to deploy an Omniverse NFT, just replace `SkywalkerFungible` with `SkywalkerNonFungible` for EVM-compatible chains, and replace `assets` with `uniques` for Substrate, and do some extra work.
+
 ### `Substrate`
+#### Set collection metadata
+
 #### Set metadata
 
-#### Start
-```
-npm src/main.js
-```
-
-You can see outputs on the screen like this
-[image here]
-
-
-
+### `EVM`
 #### Set base URI
-The base URI is used to index the metadata of 
+The base URI is used to index the metadata of NFT.
+
+Call the method `setBaseURI` of the deployed `SkywalkerNonFungible`.
+
+If the base URI is `<BASE_URI>`, then the URI of an NFT with id `<ID>` is `<BASE_URI><ID>`.
