@@ -40,7 +40,7 @@ To make it convenient, we have already deployed one kind of Omniverse Tokens, to
 #### Parachain of `Omniverse DLT`
 * Pallet `Assets` is for fungible token:  
     * The `tokenId` of the deployed token$ is `skywalker`
-* Pallet `Uniques` is for nonfungible token:  
+* Pallet `Uniques` is for non-fungible token:  
     * The `tokenId` of the deployed token is `skywal`
 * Pallet `OmniverseProtocol` is mainly used to manage account, verify omniverse transactions
 
@@ -115,7 +115,7 @@ You can check the information of the account with the `secret seed` mentioned at
 ![img](./assets/get-account-info.png)  
 
 ## Omniverse Token Protocol
-Currently, we support both Omniverse Fungible Token and Omniverse Nonfungible Token.
+Currently, we support both Omniverse Fungible Token and Omniverse Non-Fungible Token.
 
 ### Omniverse Fungible Token
 The operations related to the Omniverse Fungible Token include `claim`, `balance of`, and `transfer`.  
@@ -148,13 +148,14 @@ The operations related to the Omniverse Fungible Token include `claim`, `balance
 
 * Check `balance of` Token $skywalker$ of related account on EVM chains:  
     ```
+    cd contracts
     node register/index.js -ob GOERLI,0x256077...
     ```
     * `GOERLI` is the network name from which we want to query the balance.  
     * `0x256077...` is the Omniverse Account got by [-a/--account](#check-the-account).  
     * **Note that** there is `,` between the paremeters.  
 
-### Make transaction of Omniverse Non-Fungible Token
+### Make transaction of Omniverse Fungible Token
 #### Initiate the Omiverse transaction
 * Transfer Token $skywalker$ to another account on Polkadot:
     ```sh
@@ -184,8 +185,8 @@ The operations related to the Omniverse Fungible Token include `claim`, `balance
     * You can check the transaction on EVM chains at skywalker [0xf21CA8E3Bd20e79174d5c12E5620d8Bad357CE10](https://goerli.etherscan.io/address/0xf21CA8E3Bd20e79174d5c12E5620d8Bad357CE10) as follows:  
     ![img](./assets/token-skywalker.png)
 
-### Omniverse Nonfungible Token
-The operations related to the Omniverse Nonfungible Token include `claim`, `balance of`, `owner of` and `transfer`.  
+### Omniverse Non-Fungible Token
+The operations related to the Omniverse Non-Fungible Token include `claim`, `balance of`, `owner of` and `transfer`.  
 * [Claim](#claim-nft)
 * [Check the balance](#check-the-balance-nft)
 * [Transaction](#make-transaction-of-omniverse-nft)
@@ -196,8 +197,12 @@ The operations related to the Omniverse Nonfungible Token include `claim`, `bala
 * `Claim` Token $skywal$ to operation Account:  
     ```sh
     # -c, --claim <tokenId>
-    node index.js -c skywal
+    node index.js -c skywal,<tokenId> -p uniques
     ```
+    `<tokenId>` is the id of the Omniverse NFT
+    **Before claiming, please make sure the token is not existed by [querying the owner](#check-the-owner-of-nft)**
+
+    A few minutes later, you can scan the NFT on OpenSea, [like this](https://testnets.opensea.io/zh-CN/assets/goerli/0xB38d75754d799e4f07bb9EE774B9b2DAe3dB0E56/3). **This is just for the token id smaller than 100.**
 
 ### Check the balance
 #### Check balance on Polkadot
@@ -213,7 +218,7 @@ The operations related to the Omniverse Nonfungible Token include `claim`, `bala
 #### Check balance on EVM chains
 * Go to [EVM tools path](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant/contracts) first, and follow the tutorial to check what happened on EVM. 
 
-* Check `balance of` Token $skywalker$ of related account on EVM chains:  
+* Check `balance of` Token $skywal$ of related account on EVM chains:  
     ```
     node register/nft.js -ob GOERLI,0x256077...
     ```
@@ -221,15 +226,15 @@ The operations related to the Omniverse Nonfungible Token include `claim`, `bala
     * `0x256077...` is the Omniverse Account got by [-a/--account](#check-the-account).  
     * **Note that** there is `,` between the paremeters.  
 
-### Check the owner
+### Check the owner of NFT
 #### Check owner on Polkadot
 * Check `owner of` Token $skywal$ of related account on Polkadot:  
     ```sh
     # -o, --omniBalance <tokenId>,<omniverse account>
-    node index.js -o skywal,0x256077... -p uniques
+    node index.js -n skywal,<tokenId> -p uniques
     ```
     * `skywal` is the tokenId mentioned [above](#parachain-of-omniverse-dlt).  
-    * `0x256077...` is the Omniverse Account got by [-a/--account](#check-the-account).  
+    * `<tokenId>` is the id of the queried Omniverse NFT.  
     * **Note that** there is `,` between the paremeters.  
 
 #### Check owner on EVM chains
@@ -237,10 +242,10 @@ The operations related to the Omniverse Nonfungible Token include `claim`, `bala
 
 * Check `owner of` Token $skywal$ of related account on EVM chains:  
     ```
-    node register/nft.js -ob GOERLI,0x256077...
+    node register/nft.js -oo GOERLI,<tokenId>
     ```
     * `GOERLI` is the network name from which we want to query the balance.  
-    * `0x256077...` is the Omniverse Account got by [-a/--account](#check-the-account).  
+    * `<tokenId>` is the id of the Omniverse NFT to be queried.  
     * **Note that** there is `,` between the paremeters.  
 
 ### Make transaction of Omniverse Non-Fungible Token
@@ -248,10 +253,10 @@ The operations related to the Omniverse Nonfungible Token include `claim`, `bala
 * Transfer Token $skywal$ to another account on Polkadot:
     ```sh
     # --transfer <tokenId>,<pk>,<amount> 
-    node index.js -t skywalker,0x256077...,66
+    node index.js -t skywal,0x256077...,66 -p uniques
     ```
-    * `skywalker` is the example tokenId of token $skywalker$.
-    * `0x256077...` is the receive Omniverse Account. You can get the Omniverse Account by [get account](#check-the-account).
+    * `skywal` is the example tokenId of token $skywal$.
+    * `0x256077...` is the recipient Omniverse Account. You can get the Omniverse Account by [get account](#check-the-account).
     * `66` is the token id of transferred token $skywal$.
 
 * Check `owner of` Token $skywal$ as detailed at [Check the NFT balance](#check-the-balance-nft) above.  
@@ -259,19 +264,19 @@ The operations related to the Omniverse Nonfungible Token include `claim`, `bala
     ```sh
     # sender
     # -o, --omniBalance <tokenId>,<omniverse account>
-    node index.js -o skywalker,<o-account of sender>
+    node index.js -o skywal,<o-account of sender> -p uniques
     # receiver
     # -o, --omniBalance <tokenId>,<omniverse account>
-    node index.js -o skywalker,<o-account of receiver>
+    node index.js -o skywal,<o-account of receiver> -p uniques
     ```
     * You may find outputs as follows:  
     ![img](./assets/Omniverse-transfer-1.png)  
     ![Polkadot Scan](./assets/Omniverse-transfer-1-onchain.png)  
 
     * Go to [EVM tools path](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant/contracts) first, and follow the tutorial to check what happened on EVM. 
-    * Check `balance of` Token $skywalker$ of related account on EVM chains at [Check the balance](#check-the-balance) above:  
-    * You can check the transaction on EVM chains at skywalker [0xf21CA8E3Bd20e79174d5c12E5620d8Bad357CE10](https://goerli.etherscan.io/address/0xf21CA8E3Bd20e79174d5c12E5620d8Bad357CE10) as follows:  
-    ![img](./assets/token-skywalker.png)
+    * Check `balance of` Token $skywal$ of related account on EVM chains at [Check the balance](#check-the-balance) above:  
+    * You can check the transaction on EVM chains at skywal [0xB38d75754d799e4f07bb9EE774B9b2DAe3dB0E56](https://goerli.etherscan.io/address/0xB38d75754d799e4f07bb9EE774B9b2DAe3dB0E56) as follows:  
+    ![img](./assets/token-skywalker-nft.png)
 
 ## Advanced Features
 We also provided an advanced feature:
@@ -282,7 +287,7 @@ We also provided an advanced feature:
 ### Create your own Omniverse Token
 #### Fungible token
 ![img](./assets/create-your-own-Omni-token.png)  
-* `ownerPk` is the [Omniverse Account](#check-the-account) who cen be the owner of the Omniverse token to be created.
+* `ownerPk` is the [Omniverse Account](#check-the-account) who will be the owner of the Omniverse token to be created.
 * After the creation, you can use `mint` with the operator Account of the owner to mint any amount of the new token to anyone.
     ```sh
     # --mint <tokenId>,<omniverse account>,<amount>
@@ -295,7 +300,7 @@ We also provided an advanced feature:
 
 #### Non-Fungible Token
 ![img](./assets/create-your-own-Omni-NFT.png)  
-* `ownerPk` is the [Omniverse Account](#check-the-account) who cen be the owner of the Omniverse token to be created.
+* `ownerPk` is the [Omniverse Account](#check-the-account) who will be the owner of the Omniverse token to be created.
 * After the creation, you can use `mint` with the operator Account of the owner to mint any amount of the new token to anyone.
     ```sh
     # --mint <tokenId>,<omniverse account>,<amount>
