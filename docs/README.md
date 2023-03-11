@@ -270,8 +270,9 @@ The operations related to the Omniverse Non-Fungible Token include `claim`, `bal
     node index.js -o skywal,<o-account of receiver> -p uniques
     ```
     * You may find outputs as follows:  
-    ![img](./assets/Omniverse-transfer-1.png)  
-    ![Polkadot Scan](./assets/Omniverse-transfer-1-onchain.png)  
+    ![img](./assets/nft-transfer1.png)  
+    ![img](./assets/nft-transfer2.png)  
+    ![Polkadot Scan](./assets/nft-transfer-onchain.png)  
 
     * Go to [EVM tools path](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant/contracts) first, and follow the tutorial to check what happened on EVM. 
     * Check `balance of` Token $skywal$ of related account on EVM chains at [Check the balance](#check-the-balance) above:  
