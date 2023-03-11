@@ -231,7 +231,7 @@ The `data` is ipfs CID of JSON object, like this:
 }
 ```
 
-After setting the collection metadata, and `Network -> NFT -> My NFTs` will display the owned NFTs.
+After setting the collection metadata, `Network -> NFT -> My NFTs` will display the owned NFTs.
 
 #### Set the metadata for an item
 
