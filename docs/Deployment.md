@@ -217,9 +217,35 @@ See the [tutorial](./README.md) for how to use Omniverse tokens. For `Solidity` 
 If you want to deploy an Omniverse NFT, just replace `SkywalkerFungible` with `SkywalkerNonFungible` for EVM-compatible chains, and replace `assets` with `uniques` for Substrate, and do some extra work.
 
 ### Substrate
-#### Set collection metadata
+#### Set the metadata for a collection
 
-#### Set metadata
+![set colletion metadata](./assets/deployment/setCollectionMetadata.jpg)
+
+The `data` is ipfs CID of JSON object, like this:
+
+```json
+{
+  "name": "My NFT",
+  "image": "QmasWcWBs4W3VoJj2xxxxxxxxxxxxxxxCMVCqKn9SakGUp",
+  "description": "###"
+}
+```
+
+After setting the collection metadata, and `Network -> NFT -> My NFTs` will display the owned NFTs.
+
+#### Set the metadata for an item
+
+![set colletion metadata](./assets/deployment/setItemMetadata.jpg)
+
+The `data` struct is the same as above.
+
+```json
+{
+  "name": "My NFT #1",
+  "image": "QmXJZpCgRwA4LgzP7xxxxxxxxxxxxxxxQyfYJ8Bn5W9UoF",
+  "description": ""
+}
+```
 
 ### EVM-compatible chains
 #### Set base URI
