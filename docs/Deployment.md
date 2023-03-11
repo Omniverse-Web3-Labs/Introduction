@@ -3,9 +3,9 @@
 From this tutorial, you can learn how to deploy an Omniverse FT or NFT, which almost follow the same process. 
 
 In this tutorial, you will use these repos:
-- [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm): Contains the contract code for EVM-compatible chains.  
-- [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap): Contains the pallets for Substrate.  
-- [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer): The synchronizer responsible for synchronizing messages between chains.
+- [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant): Contains the contract code for EVM-compatible chains.  
+- [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap/tree/web3-grant): Contains the pallets for Substrate.  
+- [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/tree/web3-grant): The synchronizer responsible for synchronizing messages between chains.
 
 ## Prerequisites
 - Truffle >= v5.7.9
@@ -36,7 +36,7 @@ You can start a local Omniverse-DLT Substrate node.
   2. Clone the node repository by running the following command:
 
   ```bash
-  git clone https://github.com/Omniverse-Web3-Labs/omniverse-swap.git
+  git clone -b web3-grant https://github.com/Omniverse-Web3-Labs/omniverse-swap.git
   ```
 
   3. Change to the root of the node template directory by running the following command:
@@ -104,7 +104,7 @@ You can deploy the contracts on any EVM-compatible chain, but let us use Goerli 
 #### Clone omniverse-evm
 Enter your work directory, let's say `<WORK_DIR>`, input the code
 ```
-git clone git@github.com:Omniverse-Web3-Labs/omniverse-evm.git
+git clone -b web3-grant https://github.com/Omniverse-Web3-Labs/omniverse-evm.git
 ```
 
 #### Launch Remix
@@ -156,7 +156,7 @@ git clone git@github.com:Omniverse-Web3-Labs/omniverse-evm.git
 ### Synchronizer
 #### Clone `omniverse-synchronizer`
 ```
-git clone git@github.com:Omniverse-Web3-Labs/omniverse-synchronizer.git
+git clone -b web3-grant https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer.git
 ```
 
 #### Install
@@ -170,6 +170,14 @@ npm install
 - Set the address of the contract `SkywalkerFungible` deployed above to the field `GOERLI`.`skywalkerFungibleContractAddress`.
 - Set the node address of your substrate node to the field `SUBSTRATE`.`nodeAddress`.
 ![config](./assets/deployment/config.png)
+
+#### Set keys for routers
+Keys are stored in the file `.secret`.  
+```
+cp config/.secret.example config/.secret
+```
+
+Set the private keys in `.secret` to networks which your token will support.
 
 #### Launch
 ```
@@ -203,7 +211,7 @@ Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2
 ![set members evm](./assets/deployment/set%20members%20evm.png)
 
 ## Experience
-See the [tutorial](./README.md) for how to use Omniverse tokens.
+See the [tutorial](./README.md) for how to use Omniverse tokens. For `Solidity` version, you can also use `Remix`, instead of the tool in the repo `omniverse-evm`.
 
 ## Addition
 If you want to deploy an Omniverse NFT, just replace `SkywalkerFungible` with `SkywalkerNonFungible` for EVM-compatible chains, and replace `assets` with `uniques` for Substrate, and do some extra work.
