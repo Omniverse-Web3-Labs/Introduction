@@ -28,7 +28,7 @@ The Parachain of `Omniverse DLT` is deployed at `ws://3.122.90.113:9944`, and we
 ![img](./assets/connection.png)
 <p align='center'>Figure.1 Connect to `Omniverse DLT` Parachain</p>  
 
-If succeed, you can find the related pallets at [Extrinsics](https://polkadot.js.org/apps/#/extrinsics):  
+If succeed, you can find the related pallets at [Chain state](https://polkadot.js.org/apps/#/chainstate):  
 ![img](./assets/connection%20succeed.png)  
 
 ### Deployment
