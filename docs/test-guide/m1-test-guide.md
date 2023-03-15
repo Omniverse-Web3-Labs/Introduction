@@ -12,11 +12,17 @@ If you want to make the deployment from the first beginning, although it is not 
 
 - [Deploy the `O-DLT` example Parachain](../Deployment.md#substrate)
 - [Deploy the `O-DLT` example EVM Smart Contracts](../Deployment.md#evm-compatible-chain)  
+- [Deploy the off-chain Synchronizers](../Deployment.md#synchronizer)  
 
 ### Tools Installation
 
-Actually, there's no need for new kind of wallets to operate `O-DLT` tokens, and what we need is just integrating existing wallets when developing front Dapps. As the time is limited, now we have just provided a CLI Client to operate `O-DLT` Tokens.  
+Actually, there's no need for new kind of wallets to operate `O-DLT` tokens, and what we need is just integrating existing wallets when developing front Dapps.  
+As the time is limited, now we have just provided a CLI Client to operate `O-DLT` Tokens.  
 
 - [Install CLI Tools](../README.md#tools-install)  
 
+### Test Operations
 
+#### Create Omniverse Account
+
+An omniverse account can be directly used for both Polkadot and EVM chains. 
