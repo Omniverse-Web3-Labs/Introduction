@@ -102,6 +102,9 @@ Open `polkadot.js apps` and connect to the node you launched. Navigate to page `
 - members: The members supported by the token, it is optional and can be set later
 
 ### EVM-compatible chain
+
+**NOTE: The account which is used to deploy the contract SHOULD have the same private key as the owner of the token created previously**
+
 You can deploy the contracts on any EVM-compatible chain, but let us use Goerli as example. Here I assume you are familiar with Ethereum, at least knowing how to create an account and receiving some tokens from faucet.
 
 #### Clone omniverse-evm
