@@ -36,8 +36,9 @@ Temporarily, An omniverse account is a public key generated with the elliptic cu
 #### **Transactions of the `O-DLT` tokens**
 
 We have provided detailed guidance on the commonly used omniverse operations, including `Claim`, `Check balance`, and `transferring`, for both the fungible tokens and the non-fungible tokens.  
-To directly test the operations, you can try the `skywalker` fungible token and the `skywal` NFT already deployed.   
+To directly test the operations (*highly recommended for efficiency*), you can try the `skywalker` fungible token and the `skywal` NFT already deployed.   
 
 - [For Fungible Tokens](../README.md#omniverse-fungible-token)  
 - [For Non-Fungible Tokens](../README.md#omniverse-non-fungible-token)
 
+To test the operations of your own token, make the [deployment and initialization](#deployment) first.  
