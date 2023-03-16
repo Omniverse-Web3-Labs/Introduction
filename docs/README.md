@@ -286,28 +286,5 @@ We also provided an advanced feature:
 *Note that these tools are only available on Polkadot as the limitation of time. They will be easily extended to other chains and we will finish them soon.*
 
 ### Create your own Omniverse Token
-#### Fungible token
-![img](./assets/create-your-own-Omni-token.png)  
-* `ownerPk` is the [Omniverse Account](#check-the-account) who will be the owner of the Omniverse token to be created.
-* After the creation, you can use `mint` with the operator Account of the owner to mint any amount of the new token to anyone.
-    ```sh
-    # --mint <tokenId>,<omniverse account>,<amount>
-    node index.js -m <tokenId>,0x5a1...,<amount>
-    ```
-    * `tokenId` is a string naming your token.
-    * `0x5a1...` is the Omniverse Account you want to mint to.
-    * The last parameter is the `amount` you want to mint.
-* After that, you can operate your Omniverse Token as mentioned [above](#omniverse-fungible-token).  
 
-#### Non-Fungible Token
-![img](./assets/create-your-own-Omni-NFT.png)  
-* `ownerPk` is the [Omniverse Account](#check-the-account) who will be the owner of the Omniverse token to be created.
-* After the creation, you can use `mint` with the operator Account of the owner to mint any amount of the new token to anyone.
-    ```sh
-    # --mint <tokenId>,<omniverse account>,<amount>
-    node index.js -m <tokenId>,0x5a1...,<amount> -p uniques
-    ```
-    * `tokenId` is a string naming your token.
-    * `0x5a1...` is the Omniverse Account you want to mint to.
-    * The last parameter is the `token id` you want to mint.
-* After that, you can operate your Omniverse Token as mentioned [above](#omniverse-nonfungible-token).  
+You can refer to this [deployment tutorial](./Deployment.md) to create Omniverse tokens.

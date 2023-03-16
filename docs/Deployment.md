@@ -198,7 +198,12 @@ The members determine which chains are supported by the omniverse token.
 *This step can be ignored, if the members have been set in `createToken`*
 
 Call the method `setMembers` of the module `assets` using the account which is the owner of the token. The argument include all members of the token.
-![set members](./assets/deployment/set members.png)
+
+![set members](./assets/deployment/set%20members.png)
+
+There are two members of the token:  
+- GOERLI: `2` is its chain id, `0x...fa8` is the token contract address.
+- SUBSTRATE: `1` is its chain id, `FT` is the token id.
 
 ### EVM-compatible chain
 #### Set cooling down time
@@ -214,7 +219,23 @@ Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2
 ![set members evm](./assets/deployment/set%20members%20evm.png)
 
 ## Experience
-See the [tutorial](./README.md) for how to use Omniverse tokens. For `Solidity` version, you can also use `Remix`, instead of the tool in the repo `omniverse-evm`.
+
+**Keep the synchronizer running when executing Omniverse transactions.**
+
+### Mint tokens
+
+The [tool](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/web3-grant) needs to be used to mint tokens, follow the [README.md](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/web3-grant/README.md) to install the tool and set private key of the owner in `.secret`.
+
+Input the following code to mint tokens:
+```
+node index.js -m FT,0x5a1...,100
+```
+
+- `FT`: The id of the token you created.
+- `0x5a1...`: The Omniverse account you want to mint tokens to.
+- `100`: The count you want to mint.
+
+See the [tutorial](./README.md) for more information about how to use Omniverse tokens. For `Solidity` version, you can also use `Remix` to send Omniverse transactions, but it is recommended to use the [`EVM tool`](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant/contracts).
 
 ## Addition
 If you want to deploy an Omniverse NFT, just replace `SkywalkerFungible` with `SkywalkerNonFungible` for EVM-compatible chains, and replace `assets` with `uniques` for Substrate, and do some extra work.
