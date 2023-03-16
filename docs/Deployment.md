@@ -91,6 +91,9 @@ After the node is compiled, follow the steps below to run the node:
 Now, you can start exploring what it does using [polkadot-js](https://polkadot.js.org/) or [contract_ui](https://contracts-ui.substrate.io/)
 
 #### Create token
+
+We have provided the [detailed tutorial](./README.md#create-your-own-omniverse-token) of how to create Omniverst tokens on the `O-DLT` parachain. The following is an overview.  
+
 Open `polkadot.js apps` and connect to the node you launched. Navigate to page `Developer->Extrinsics`, Select the module `assets` and method `createToken`.  
 ![create token](./assets/deployment/create%20token.png)
 
