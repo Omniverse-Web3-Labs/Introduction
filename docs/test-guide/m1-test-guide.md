@@ -14,6 +14,9 @@ If you want to make the deployment from the first beginning, although it is not 
 - [Create your own `O-DLT` token on the Parachain](../README.md#create-your-own-omniverse-token)
 - [Deploy the `O-DLT` example EVM Smart Contracts](../Deployment.md#evm-compatible-chain)  
 - [Deploy the off-chain Synchronizers](../Deployment.md#synchronizer)  
+- [Initialization](../Deployment.md#initialization)  
+    - [`O-DLT` token on Parachain](../Deployment.md#substrate-1)
+    - [`O-DLT` token on EVM](../Deployment.md#evm-compatible-chain-1)
 
 ### **Tools Installation**
 
@@ -37,12 +40,4 @@ To directly test the operations, you can try the `skywalker` fungible token and 
 
 - [For Fungible Tokens](../README.md#omniverse-fungible-token)  
 - [For Non-Fungible Tokens](../README.md#omniverse-non-fungible-token)
-
-Lastly, the following steps will guide you create and deploy your own `O-DLT` tokens.  
-
-- We highly recommend you create your own `O-DLT` on the [deployed `O-DLT` Parachain](../README.md#parachain-of-omniverse-dlt)  
-    - [Create your own `O-DLT` token on the Parachain](../README.md#create-your-own-omniverse-token)
-    - [Deploy the `O-DLT` token on EVM chains](../Deployment.md#evm-compatible-chain)  
-    - [Deploy the off-chain Synchronizers](../Deployment.md#synchronizer)  
-- If you want to start your own `O-DLT` parachain, see [deployment](#deployment) for details.
 
