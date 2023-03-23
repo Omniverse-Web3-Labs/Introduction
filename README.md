@@ -2,7 +2,11 @@
 
 ## Overview
 
-- [Pitch Deck](./Deck.pdf)
+<p align='center' id='architecture'>Figure.1 Architecture</p> 
+
+![image](https://user-images.githubusercontent.com/83746881/225183344-a7883ae8-fa5d-48d3-b8ec-cb9231114399.png)  
+
+The Omniverse DLT is a new **application-level** (ERC) token protocol built upon multiple existing L1 public chains, enabling asset-related operations such as transfers and receptions running **globally** and **synchronously** over different consensus spaces.
 
 ## Motivation
 
@@ -16,9 +20,7 @@ The core of `O-DLT` is **synchronization** instead of **bridge-transferring**, e
 
 ## Rationale
 
-<p align='center' id='architecture'>Figure.1 Architecture</p> 
 
-![image](https://user-images.githubusercontent.com/83746881/225183344-a7883ae8-fa5d-48d3-b8ec-cb9231114399.png)
 
 With `O-DLT`, we can create a global token protocol, that leverages smart contracts or similar mechanisms on existing blockchains to record the token states synchronously. The synchronization could be made by trustless off-chain synchronizers.  
 
@@ -119,6 +121,7 @@ The two roles might be where the attack happens:
 
 ## Index
 
+- [Pitch Deck](./Deck.pdf)
 - [Tutorial](./docs/README.md)
 - [Principle of Omniverse AMM](./docs/Principle%20of%20Omniverse%20AMM.md)
 
