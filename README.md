@@ -31,7 +31,8 @@ As shown in [Figure.1](#architecture), smart contracts deployed on multi-chains 
 
 ### Principle
 
-- The `o-account` has been mentioned [above](#omniverse-account).
+- There should be a global user identifier for O-DLT, which is recommended to be referred to as Omniverse Account (`o-account` for short) in this article.  
+The `o-account` is recommended to be expressed as a public key created by the elliptic curve `secp256k1`. A [mapping mechanism](#mapping-mechanism-for-different-environments) is recommended for different environments.  
 - The synchronization of the `o-transactions` guarantees the ultimate consistency of token states across all chains. The related data structure can be found [here: `solidity`](https://github.com/Omniverse-Web3-Labs/omniverse-evm/blob/7d9129fc15cef4b9e23c27fc3e0e220e88bffcc8/contracts/contracts/interfaces/IERC6358.sol#L13) and [here: `rust`](https://github.com/Omniverse-Web3-Labs/omniverse-swap/blob/5e50159da24cdfa867cdc5b69427cc49aed83c4d/pallets/omni-protocol/src/types.rs#L81).
 
     - A `nonce` mechanism is brought in to make the states consistent globally.
