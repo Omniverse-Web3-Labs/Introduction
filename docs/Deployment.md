@@ -14,6 +14,7 @@ As the deployment of a new `o-token` is a long story, we provide a quick veiw of
 
 - [Deploy the `O-DLT` example Parachain](#substrate)
 - [Create your own `O-DLT` token on the Parachain](#create-token), and remember to set the `ownerpk` to be the operator who will deploy EVM smart contracts next
+  - [Set metadata of the `O-DLT` token `assets` on the Parachain](#set-metadata) after creating token  
 - [Deploy the `O-DLT` example EVM Smart Contracts](#evm-compatible-chain) with the operator whose public key is the `ownerpk` in the previous step.      
 - [Initialization for both Parachain and EVM chain](#initialization)  
     - [`set member` for the new deployed `o-token` on Parachain](#set-members)
