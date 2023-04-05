@@ -117,6 +117,12 @@ Open `polkadot.js apps` and connect to the node you launched. Navigate to page `
 - tokenId: The token identity
 - members: The members supported by the token, it is optional and can be set later
 
+##### Set Metadata
+
+For `assets` in Parachain, we need to set metadata first. In current desgin, the decimal is `12`.  
+
+![set-metadata](./assets/deployment/setmetadata.png)  
+
 ### EVM-compatible chain
 
 **NOTE: The account which is used to deploy the contract SHOULD have the same private key as the owner of the token created previously**
@@ -200,6 +206,12 @@ cp config/.secret.example config/.secret
 ```
 
 Set the private keys in `.secret` to networks which your token will support.
+
+![secret](./assets/deployment/secret-example.png)  
+
+The `.secret` file may seems like the above picture. The secret key for EVM chains is directly the raw secret key. For substrate, it's the encoded content in `key pair json file` created by [polkadot-js](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/tree/main/docs#create-account).  
+Remember to suitablely process the `"` to `\"` first. And thanks to [@dsm-w3f](https://github.com/dsm-w3f), the [online-json-escape-tool](https://www.freeformatter.com/json-escape.html) will help.  
+
 
 #### Launch
 ```
