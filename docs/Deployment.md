@@ -203,7 +203,7 @@ Set the private keys in `.secret` to networks which your token will support.
 
 #### Launch
 ```
-npm src/main.js
+node src/main.js
 ```
 
 You can see outputs on the screen like this  
