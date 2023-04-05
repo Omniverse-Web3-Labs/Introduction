@@ -5,7 +5,8 @@ From this tutorial, you can learn how to deploy an Omniverse FT or NFT, which al
 In this tutorial, you will use these repos:
 - [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant): Contains the contract code for EVM-compatible chains.  
 - [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap/tree/web3-grant): Contains the pallets for Substrate.  
-- [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/tree/web3-grant): The synchronizer responsible for synchronizing messages between chains.
+- [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/tree/web3-grant): The synchronizer responsible for synchronizing messages between chains. **The configuration needs to be changed according to the users.**
+- [omniverse-transaction-tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/web3-grant): The tool-chain to operate the omniverse transactions. **The configuration needs to be changed according to the users.**
 
 ## Prerequisites
 - Truffle >= v5.7.9
@@ -224,6 +225,9 @@ Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2
 ## Experience
 
 **Keep the synchronizer running when executing Omniverse transactions.**
+
+### Change the IP of the Local Substrate Parachain
+
 
 ### Mint tokens
 
