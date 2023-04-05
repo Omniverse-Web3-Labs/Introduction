@@ -33,7 +33,7 @@ If succeed, you can find the related pallets at [Chain state](https://polkadot.j
 ### Deployment
 To make it convenient, we have already deployed one kind of Omniverse Tokens, token $skywalker$ for FT and token $skywal$ for NFT, which have been already initialized on the `Omniverse DLT` Parachain of Polkadot.  
 
-**We highly recommend you to test the functions with our `pre-deployed environment`**. You can also deploy your own Omniverse tokens, and as it will have more steps to do, **remember to read the [Tutorial](./Deployment.md) carefully first**.  
+**We highly recommend you test the functions with our `pre-deployed environment`**. You can also deploy your own Omniverse tokens, and as it will have more steps to do, **remember to read the [Tutorial](./Deployment.md) carefully first**.  
 
 <!-- ***Note that the precision of the Omniverse tokens is $10^{0}$.*** -->
 
