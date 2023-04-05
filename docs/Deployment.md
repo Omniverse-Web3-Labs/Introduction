@@ -8,6 +8,21 @@ In this tutorial, you will use these repos:
 - [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/tree/web3-grant): The synchronizer responsible for synchronizing messages between chains. [**The configuration needs to be changed according to the users.**](#change-configuration)
 - [omniverse-transaction-tools](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/web3-grant): The tool-chain to operate the omniverse transactions. [**The configuration needs to be changed according to the users.**](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/web3-grant#configuration)
 
+## A Quick View
+
+As the deployment of a new `o-token` is a long story, we provide a quick veiw of how it happens.  
+
+- [Deploy the `O-DLT` example Parachain](#substrate)
+- [Create your own `O-DLT` token on the Parachain](#create-token), and remember to set the `ownerpk` to be the operator who will deploy EVM smart contracts next
+- [Deploy the `O-DLT` example EVM Smart Contracts](#evm-compatible-chain) with the operator whose public key is the `ownerpk` in the previous step.      
+- [Initialization for both Parachain and EVM chain](#initialization)  
+    - [`set member` for the new deployed `o-token` on Parachain](#set-members)
+    - [Set cooling down time for the new deployed `o-token` on EVM](#set-cooling-down-time)
+    - [`set member` for the new deployed `o-token` on EVM](#set-members-1)
+- [Deploy the off-chain Synchronizers](#synchronizer)  
+
+After the above steps, we can use the `omniverse-transaction-tool` to make omniverse transactions, and **remember to make the [configuration](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/web3-grant#configuration) of the tool first** according to your own situation.  
+
 ## Prerequisites
 - Truffle >= v5.7.9
 - Ganache >= v7.7.5(If you want to run tests for `omniverse-evm`)
@@ -207,7 +222,7 @@ Call the method `setMembers` of the module `assets` using the account which is t
 
 There are two members of the token:  
 - GOERLI: `2` is its chain id, `0x...fa8` is the token contract address.
-- SUBSTRATE: `1` is its chain id, `FT` is the token id.
+- SUBSTRATE: `1` is its chain id, `FT` is the *example* token id.
 
 ### EVM-compatible chain
 #### Set cooling down time
@@ -218,7 +233,7 @@ Call the method `setCoolingDownTime` of `SkywalkerFungible` in Remix, with argum
 ![set cooling down](./assets/deployment/set%20cooling%20down.png)
 
 #### Set members
-Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, <SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `<SUBSTRATE-TOKEN-ID>`.
+Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, <SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `<SUBSTRATE-TOKEN-ID>`. **The `<SUBSTRATE-TOKEN-ID>` needs to be transformed to HEX** as in the picture below.
 
 ![set members evm](./assets/deployment/set%20members%20evm.png)
 
