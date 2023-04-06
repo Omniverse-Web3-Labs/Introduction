@@ -223,6 +223,9 @@ npm install
 - Set the node address of your substrate node to the field `SUBSTRATE`.`nodeAddress`.
 ![config](./assets/deployment/config.png)
 
+  - Note that, if your token is **Fungible**, the settings in `pallets` of `SUBSTRATE` needs to be **only `["assets"]`**
+  - If your token is **NFT**, the settings in `pallets` of `SUBSTRATE` needs to be **only `["uniques"]`**
+
 #### Set keys for routers
 Keys are stored in the file `.secret`.  
 ```
