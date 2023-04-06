@@ -24,6 +24,19 @@ As the deployment of a new `o-token` is a long story, we provide a quick veiw of
 
 After the above steps, we can use the `omniverse-transaction-tool` to make omniverse transactions, and **remember to make the [configuration](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/web3-grant#configuration) of the tool first** according to your own situation.  
 
+## Properties
+
+Here are some RECOMMENDED configurations for test, these are not standards but we recommend you to use these configurations in the test. You can define them as you wish.  
+
+### Omniverse Chain IDs
+
+- BSCTEST: 0
+- SUBSTRATE: 1
+- GOERLI: 2
+- MOONBASEALPHA: 3
+- PLATON: 4
+- SEPOLIA: 5
+
 ## Prerequisites
 - Truffle >= v5.7.9
 - Ganache >= v7.7.5(If you want to run tests for `omniverse-evm`)
@@ -81,6 +94,8 @@ After the node is compiled, follow the steps below to run the node:
   ```bash
   ./target/release/node-template  --dev --base-path ./data
   ```
+
+  If you don't want the history data in the next time, just delete the `./data` directory.  
 
   Note that if you **don't want** to restore history state of the parachain, use the following command. **But this will lead you to re-deploy everything next time (including the smart contracts deployed on other chains)**
 
@@ -221,6 +236,9 @@ Remember to suitablely process the `"` to `\"` first. And thanks to [@dsm-w3f](h
 
 
 #### Launch
+
+**Note that if you want to launch from a completely new star, delete the `.state` file first.**
+
 ```
 node src/main.js
 ```
