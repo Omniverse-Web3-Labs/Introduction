@@ -200,16 +200,18 @@ git clone -b web3-grant https://github.com/Omniverse-Web3-Labs/omniverse-evm.git
   Choose the environment as `Injected Provider - MetaMask` and choose the contract as `SkywalkerFungible`  
   ![environment](./assets/deployment/environment.png)
 
-  You must input the chain id, which indicates on which chain the contract will be deployed, token name and token symbol. Then click the `transact` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
+  You must input the [omniverse chain id](#omniverse-chain-ids), which indicates on which chain the contract will be omniversely deployed, token name and token symbol. Then click the `transact` button, you will be asked to sign two transactions later, the first is for `OmniverseProtocolHelper`, the latter is for `SkywalkerFungible`.  
   ![transact](./assets/deployment/transact.png)
 
 ### Synchronizer
 #### Clone `omniverse-synchronizer`
+
 ```
 git clone -b web3-grant https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer.git
 ```
 
 #### Install
+
 ```
 cd omniverse-synchronizer
 npm install
@@ -261,6 +263,8 @@ There are two members of the token:
 - GOERLI: `2` is its chain id, `0x...fa8` is the token contract address.
 - SUBSTRATE: `1` is its chain id, `FT` is the *example* token id.
 
+**You can check the omniverse chain ids [here](#omniverse-chain-ids).**  
+
 ### EVM-compatible chain
 #### Set cooling down time
 The cooling down time is used to limit the speed of an omniverse transaction, in order that there is enough time to deal with conflicts.
@@ -272,7 +276,15 @@ Call the method `setCoolingDownTime` of `SkywalkerFungible` in Remix, with argum
 #### Set members
 Call the method `setMembers` of `SkywalkerFungible` in Remix, with argument `[[2, <EVM-CONTRACT-ADDRESS>], [1, <SUBSTRATE-TOKEN-ID>]]`, which means there are two members, one is the chain with id `2` and contract `<EVM-CONTRACT-ADDRESS>`, the other one is the chain with id `1` and token id `<SUBSTRATE-TOKEN-ID>`. **The `<SUBSTRATE-TOKEN-ID>` needs to be transformed to HEX** as in the picture below.
 
-![set members evm](./assets/deployment/set%20members%20evm.png)
+![set members evm](./assets/deployment/set%20members%20evm.png)  
+
+An example of the input is:  
+
+```
+[[5,"0x smart contract address on EVM chains"],[1,"the tokenid on substrate parachain, which is a HEX like `0x78797a` transformed from `xyz`"]]
+```
+
+**You can check the omniverse chain ids [here](#omniverse-chain-ids).**  
 
 ## Experience
 
