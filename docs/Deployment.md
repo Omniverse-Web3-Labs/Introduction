@@ -79,6 +79,12 @@ After the node is compiled, follow the steps below to run the node:
   3. Start the node in development mode by running the following command:
 
   ```bash
+  ./target/release/node-template  --dev --base-path ./data
+  ```
+
+  Note that if you **don't want** to restore history state of the parachain, use the following command. **But this will lead you to re-deploy everything next time (including the smart contracts deployed on other chains)**
+
+  ```bash
   ./target/release/node-template  --dev
   ```
 
