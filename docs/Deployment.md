@@ -338,9 +338,13 @@ The `data` is ipfs CID of JSON object, like this:
 }
 ```
 
+**Note that you can set the data as `QmUB4Umq6SqQtpGwENMvdnGYCyKD8DUpCVoEX4A43qdbJE` for test.**
+
 After setting the collection metadata, `Network -> NFT -> My NFTs` will display the owned NFTs.
 
 #### Set the metadata for an item
+
+**Note that this is not necessary.**
 
 ![set colletion metadata](./assets/deployment/setItemMetadata.jpg)
 
@@ -361,3 +365,5 @@ The base URI is used to index the metadata of NFT.
 Call the method `setBaseURI` of the deployed `SkywalkerNonFungible`.
 
 If the base URI is `<BASE_URI>`, then the URI of an NFT with id `<ID>` is `<BASE_URI><ID>`.
+
+**Note that you can set the URI as `https://omniverse.oss-cn-hangzhou.aliyuncs.com/` for test.**
