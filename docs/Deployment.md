@@ -36,6 +36,13 @@ Here are some RECOMMENDED configurations for test, these are not standards but w
 - MOONBASEALPHA: 3
 - PLATON: 4
 - SEPOLIA: 5
+- Mumbai: 6
+
+The above omniverse IDs could be used in the following steps:  
+
+- [Deploy omniverse token smart contract on EVM chains](#deploy-contracts)
+- [Set members on the omniverse `assets` of Substrate Parachain](#set-members)
+- [Set members on the EVM chains](#set-members-1)
 
 ## Prerequisites
 - Truffle >= v5.7.9
