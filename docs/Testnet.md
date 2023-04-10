@@ -6,6 +6,7 @@
 
 - SUBSTRATE
     - RPC: http://3.122.90.113:9911
+    - WS: `ws://3.122.90.113:9922`
     - Explorer: [https://polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F3.122.90.113%3A9922#/chainstate)
     - SkywalkerFungible: `SKYWALKER` in `assets` pallet
     - SkywalkerNonFungible: `SKYWALKERNFT` in `uniques` pallet
