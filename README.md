@@ -1,5 +1,10 @@
 # Introduction
 
+## Index
+
+- [Proposals](#proposals)
+- [Grants](#grants)
+
 ## Overview
 
 <p align='center' id='architecture'>Figure.1 Architecture</p> 
@@ -132,3 +137,9 @@ The two roles might be where the attack happens:
 ## Proposals
 
 - [ERC-6358](https://eips.ethereum.org/EIPS/eip-6358)
+
+## Grants
+
+- Web3 Foundation
+
+<p align='center' id='w3f'>Figure.2 Web3 Foundation</p>
