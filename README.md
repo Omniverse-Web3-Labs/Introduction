@@ -143,3 +143,6 @@ The two roles might be where the attack happens:
 - Web3 Foundation
 
 <p align='center' id='w3f'>Figure.2 Web3 Foundation</p>
+
+![image](https://user-images.githubusercontent.com/83746881/232069565-2de7a85c-fea5-4246-b194-ab3e4e3ddf60.png)
+
