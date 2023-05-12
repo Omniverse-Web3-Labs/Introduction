@@ -1,8 +1,12 @@
 # Tutorial for deploying an Omniverse Token
 
-From this tutorial, you can learn how to deploy an Omniverse FT or NFT, which almost follow the same process. 
+From this tutorial, you can learn how to deploy an Omniverse FT or NFT, which almost follow the same process. Here are two videos to show the workflow:  
 
-In this tutorial, you will use these repos:
+- [The deployment of omniverse fungible token](https://omniversedlt.s3.amazonaws.com/FungibleToken-xyz-TestRecord.mp4)  
+- [The deployment of omniverse non-fungible token](https://omniversedlt.s3.amazonaws.com/NFT-abc-TestRecord.mp4)  
+  
+In this tutorial, you will use these repos:  
+
 - [omniverse-evm](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/web3-grant): Contains the contract code for EVM-compatible chains.  
 - [omniverse-swap](https://github.com/Omniverse-Web3-Labs/omniverse-swap/tree/web3-grant): Contains the pallets for Substrate.  
 - [omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/tree/web3-grant): The synchronizer responsible for synchronizing messages between chains. [**The configuration needs to be changed according to the users.**](#change-configuration)
