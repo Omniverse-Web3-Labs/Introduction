@@ -32,7 +32,13 @@
 
 ### Interfaces
 
-EVM: Refer to [https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/main/contracts](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/main/contracts)
+EVM: Refer to [https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/main/contracts/register](https://github.com/Omniverse-Web3-Labs/omniverse-evm/tree/main/contracts/register)
+
+SUBSTRAGE: Refer to [https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/main/omniverse-helper](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/tree/main/omniverse-helper)
+
+### Faucet
+
+http://3.236.58.55:7788
 
 ### Update
 
