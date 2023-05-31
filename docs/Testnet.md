@@ -1,6 +1,10 @@
 # Testnet information for development
 
-## v0.1.0
+## **v0.1.0** (Open)
+
+### Front End
+
+- http://44.226.207.107/
 
 ### Networks
 
@@ -48,7 +52,7 @@ http://3.236.58.55:7788
 - Synchronizers can restore work after disconnection
 - Remove BSC Test
 
-## Miracle
+## **Miracle**  (Closed)
 
 ### Networks
 
