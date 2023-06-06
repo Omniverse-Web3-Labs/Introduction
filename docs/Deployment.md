@@ -41,6 +41,7 @@ Here are some RECOMMENDED configurations for test, these are not standards but w
 - PLATON: 4
 - SEPOLIA: 5
 - Mumbai: 6
+- FLOWTESTNET: 7
 
 The above omniverse IDs could be used in the following steps:  
 
