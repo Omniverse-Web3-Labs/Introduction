@@ -102,7 +102,7 @@ There are several steps in the full test flow
 node src/index.js -t swap
 ```
 
-The test will be over in about 4 minutes, and `Test competed and success` will be printed in the terminal if successful.
+The test will be over in about 8 minutes, and `Test competed and success` will be printed in the terminal if successful.
 
 #### Test of swap with dockered synchronizer(Optional)
 
