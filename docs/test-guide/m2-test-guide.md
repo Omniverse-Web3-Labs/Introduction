@@ -153,7 +153,7 @@ Then continue the test by inputing 'y' and press 'Enter' in the terminal running
 Only one command is needed to execute the test, the output of which will show you what the test is doing. The output will be explained in detail in [Explaination of swap test](#explaination-of-swap-test)
 
 ```sh
-node src/index.js -t ft
+node src/index.js -t swap
 ```
 
 #### Explaination of swap test
