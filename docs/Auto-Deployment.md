@@ -67,7 +67,7 @@ Open `config/default.json`
 
 ```
 "tokenInfo": {
-        "ft": [{
+        "token": [{
             "name": "SKYWALKER",
             "symbol": "SKYWALKER"
         }]
@@ -89,7 +89,7 @@ We have configured this file for this demonstration, so you do not need to chang
 ### Auto-deployment and initializations
 
 ```
-node src/index.js -d ft [-c <NUM>]
+node src/index.js -d token [-c <NUM>]
 ```
 
 `-c <NUM>` indicates how many tokens you want to deploy, the token name will be picked from the field `tokenInfo` in `config/default`, the default value is 1. If the number is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
