@@ -17,7 +17,7 @@ npm install
 
 ### Create Accounts
 
-- You can create your omniverse accounts and get some gas tokens like [this](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/tree/main/docs#omniverse-account).  
+- You can create your omniverse accounts and get some gas tokens like [this](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/Manually-Tutorial.md#create-account).  
 
 ### Omniverse Transactions
 
