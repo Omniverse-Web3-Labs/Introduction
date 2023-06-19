@@ -118,17 +118,17 @@ The config file `config/default.json` and secret key file `.secret` will be crea
 
 Make a directory as the working directory of the synchronizer
 ```
-mkdir -p /opt/omniverse/node/test/test/latest/
+sudo mkdir -p /opt/omniverse/node/test/test/latest/
 ```
 
 Download the `docker-compose.yaml` file into the synchronizer working directory
 ```
-wget https://omniversedlt.s3.amazonaws.com/synchronizer/docker-compose.yaml -o /opt/omniverse/node/test/test/latest/docker-compose.yaml
+sudo wget https://omniversedlt.s3.amazonaws.com/synchronizer/docker-compose.yaml -O /opt/omniverse/node/test/test/latest/docker-compose.yaml
 ```
 
 Copy the config directory of the synchronizer project in `omniverse-system-test/submodules` into the synchronizer working directory
 ```
-cp -r ./submodules/synchronizer/config /opt/omniverse/node/test/test/latest/
+sudo cp -r ./submodules/omniverse-synchronizer/config /opt/omniverse/node/test/test/latest/
 ```
 
 Execute the following command to launch the synchronizer.
@@ -147,7 +147,8 @@ sudo docker logs -f test-test
 
 ![](./assets/auto-deploy/docker%20logs.png)
 
-You can use different working directory of the synchronizer, just change the field in the `docker-compose.yaml`. If you are running multiple synchronizers, you must use different working directory.
+You can use different working directory of the synchronizer, just change the field in the `docker-compose.yaml` as following. If you are running multiple synchronizers, you must use different working directory.
+
 
 
 ## Note(Option) 
