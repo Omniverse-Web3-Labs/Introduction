@@ -16,9 +16,9 @@ docker-compose up -d
 ```
 
 The following chains will be installed and launched locally:
-    - Ink! Parachain
-    - Swap Parachain
-    - Local EVM chain
+- Ink! Parachain
+- Swap Parachain
+- Local EVM chain
 
 If you do not change ports or other fields in the `docker-compose.yaml`, you can get node addresses shown below:
 
@@ -28,11 +28,33 @@ If you do not change ports or other fields in the `docker-compose.yaml`, you can
 
 ## Auto-deploy `O-DLT` token and initialization
 
-We use the system tool which is shown in [Test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md) to deploy contracts
+We use the [system test tool](https://github.com/Omniverse-Web3-Labs/omniverse-system-test/tree/milestone-2) which is shown in [Test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md) to deploy contracts.
+
+### Installation
+
+#### Clone the repository
+
+```sh
+git clone -b milestone-2 --recursive https://github.com/Omniverse-Web3-Labs/omniverse-system-test.git
+```
+
+#### Install
+
+Enter the working directory, and execute the following commands
+
+```sh
+npm install
+```
+
+#### Install for related projects
+
+```sh
+node src/index.js -i
+```
 
 ### Configure
 
-Replace `config/default.json` with `config/deploy.template.json`
+Enter the working directory, replace `config/default.json` with `config/deploy.template.json`
 ```
 cp config/deploy.template.json config/default.json
 ```
@@ -67,19 +89,19 @@ We have configured this file for this demonstration, so you do not need to chang
 node src/index.js -d ft [-c <NUM>]
 ```
 
-`<NUM>` indicates how many tokens you want to deploy, the token name will be picked from the field `tokenInfo` in `config/default`. If the number is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
+`-c <NUM>` indicates how many tokens you want to deploy, the token name will be picked from the field `tokenInfo` in `config/default`, the default value is 1. If the number is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
 
 This process is almost the same as [test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md#explaination-of-fungible-tokens-test), except that it will not run test cases.
     
 The following things will be done in the deployment process
-    - Deployment of the related (set in the `default.json`) Ink! omniverse token 
-    - Deployment of the related (set in the `default.json`) EVM omniverse token 
-    - Deployment of the related (set in the `default.json`) Pallet omniverse token
-    - Initilazation of omniverse tokens
-        - Set members
-        - Set cooling time
-        - Set Decimal
-    - Transfer gas tokens to testing accounts
+- Deployment of the related (set in the `default.json`) Ink! omniverse token 
+- Deployment of the related (set in the `default.json`) EVM omniverse token 
+- Deployment of the related (set in the `default.json`) Pallet omniverse token
+- Initilazation of omniverse tokens
+    - Set members
+    - Set cooling time
+    - Set Decimal
+- Transfer gas tokens to testing accounts
 
 ## Launch the auto-synchronizer
 
@@ -87,7 +109,7 @@ You can use the `omniverse-synchronizer` in `./submodules`
 
 ### Configure
 
-The config file `config/default.json` and secret key file `.secret` will be created automatically after you run deploy command. You do not need to change it here, you can refer the [Omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/blob/milestone-2/README.md) for more information.
+The config file `config/default.json` and secret key file `.secret` will be created automatically after you run deploy command. You do not need to change it here, you can refer [Omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/blob/milestone-2/README.md) for more information.
 
 ### Launch the synchronizer
 
@@ -97,7 +119,7 @@ cd submodules/omniverse-synchronizer
 sudo ./docker/dockerize.sh test test --version
 ```
 
-The docker image `test-test:1.0.0` will be built, the version `1.0.0` is derived from the version in the `package.json`.
+The docker image `test-test:1.0.0` will be built, `1.0.0` is derived from the version in the `package.json`.
 
 You can change the image name, and push to a docker image repository for future use. We do not need to do that in this tutorial here.
 
@@ -105,6 +127,9 @@ Execute the following command to launch a synchronizer.
 ```
 sudo bash ./docker/launch-synchronizer.sh
 ```
+
+You can see outputs like this
+![](./assets/auto-deployment/launch-synchronizer.png)
 
 You can check the logs of the synchronizer
 ```
