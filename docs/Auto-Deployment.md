@@ -116,23 +116,25 @@ The config file `config/default.json` and secret key file `.secret` will be crea
 
 ### Launch the synchronizer
 
-Enter the synchronizer directory, build a docker image for synchronizer
+Make a directory as the working directory of the synchronizer
 ```
-cd submodules/omniverse-synchronizer
-sudo ./docker/dockerize.sh test test --version
+mkdir -p /opt/omniverse/node/test/test/latest/
 ```
 
-![](./assets/auto-deploy/build%20docker.png)
-
-The docker image `test-test:1.0.0` will be built, `1.0.0` is derived from the version in the `package.json`.
-
-![](./assets/auto-deploy/images.png)
-
-You can change the image name, and push to a docker image repository for future use. We do not need to do that in this tutorial here.
-
-Execute the following command to launch a synchronizer.
+Download the `docker-compose.yaml` file into the synchronizer working directory
 ```
-sudo bash ./docker/launch-synchronizer.sh
+wget https://omniversedlt.s3.amazonaws.com/synchronizer/docker-compose.yaml -o /opt/omniverse/node/test/test/latest/docker-compose.yaml
+```
+
+Copy the config directory of the synchronizer project in `omniverse-system-test/submodules` into the synchronizer working directory
+```
+cp -r ./submodules/synchronizer/config /opt/omniverse/node/test/test/latest/
+```
+
+Execute the following command to launch the synchronizer.
+```
+cd /opt/omniverse/node/test/test/latest/
+docker-compose up -d
 ```
 
 You can see outputs like this
@@ -144,6 +146,9 @@ sudo docker logs -f test-test
 ```
 
 ![](./assets/auto-deploy/docker%20logs.png)
+
+You can use different working directory of the synchronizer, just change the field in the `docker-compose.yaml`. If you are running multiple synchronizers, you must use different working directory.
+
 
 ## Note(Option) 
 
