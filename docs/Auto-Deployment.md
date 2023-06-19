@@ -36,14 +36,14 @@
 
 ## Note(Option) 
 
-### Launch more auto-synchronizers
+- Launch more auto-synchronizers
 
-If you want to start more auto-synchronizers, repeat the [Launch the aotu-synchronizer](#launch-the-aotu-synchronizer)
+    If you want to start more auto-synchronizers, repeat the [Launch the aotu-synchronizer](#launch-the-aotu-synchronizer)
 
-### Create more omniverse tokens
+- Create more omniverse tokens
 
-If you want to create more omniverse tokens, repeat the [Auto-deploy `O-DLT` token and initillization](#auto-deploy-o-dlt-token-and-initillization) and [Launch the aotu-synchronizer](#launch-the-aotu-synchronizer)
+    If you want to create more omniverse tokens, repeat the [Auto-deploy `O-DLT` token and initillization](#auto-deploy-o-dlt-token-and-initillization) and [Launch the aotu-synchronizer](#launch-the-aotu-synchronizer)
 
-### Deploy on public EVM chains
+- Deploy on public EVM chains
 
 
