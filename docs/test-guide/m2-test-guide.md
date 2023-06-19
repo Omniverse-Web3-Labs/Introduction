@@ -47,13 +47,13 @@ node src/index.js -t ft
 
 #### Explaination of fungible tokens test
 
-There are several steps in the full test flow
+There are several steps in the full test flow, which is executed absolutely automatical and you may see the following configures and outputs.  
 
 - 1 Initialize network config for the test, currently EVM, INK and SUBSTRATE.
 
     ![secret](../assets/milestone-2/ft/system%20initialization.png)
 
-- 2 Run local nodes for all networks that initialized by step 1.
+- 2 Run local nodes (Parachains and EVM chains) for all networks that initialized by step 1.
 
     ![secret](../assets/milestone-2/ft/launch%20nodes.png)
 
@@ -78,11 +78,14 @@ There are several steps in the full test flow
     ![secret](../assets/milestone-2/ft/prepare%20for%20testing.png)
 
 - 6 Test
-  - 6.1 Mint `100` token to `user1` on CHAIN1(EVM).
+
+  Mint and transfer tokens omniversely, and the transactions will be synchronized among the three chains by the synchronizer, more over, the transactions will be verified **simutanously and independently**. The verifications are just based on **crypto signature**, which makes it absolutely trustless.  
+
+  - 6.1 CHAIN1(EVM) executes the mint transaction with `100` token to `user1` on .
 
     ![secret](../assets/milestone-2/ft/mint%20on%20chain1.png)
 
-  - 6.2 transfer `11` token to `user2` on CHAIN1(EVM).
+  - 6.2 CHAIN1(EVM) executes the transfer transaction with `11` token to `user2`.
 
     ![secret](../assets/milestone-2/ft/transfer%20on%20chain1.png)
 
@@ -90,11 +93,11 @@ There are several steps in the full test flow
 
     ![secret](../assets/milestone-2/ft/result%20on%20chain1.png)
 
-  - 6.4 Mint `100` token to `user1` on CHAIN2(SUBSTRATE).
+  - 6.4 CHAIN2(SUBSTRATE) executes the mint transaction with `100` token to `user1`.
 
     ![secret](../assets/milestone-2/ft/mint%20on%20chain2.png)
 
-  - 6.5 transfer `11` token to `user2` on CHAIN2(SUBSTRATE).
+  - 6.5 CHAIN2(SUBSTRATE) executes the transfer transaction with `11` token to `user2`.
 
     ![secret](../assets/milestone-2/ft/transfer%20on%20chain2.png)
 
@@ -102,49 +105,19 @@ There are several steps in the full test flow
 
     ![secret](../assets/milestone-2/ft/result%20on%20chain2.png)
 
-  - 6.4 Mint `100` token to `user1` on CHAIN3(INK).
+  - 6.7 CHAIN3(INK) executes the mint transaction with `100` token to `user1`.
 
     ![secret](../assets/milestone-2/ft/mint%20on%20chain3.png)
 
-  - 6.5 transfer `11` token to `user2` on CHAIN3(INK).
+  - 6.8 CHAIN3(INK) executes the transfer transaction with `11` token to `user2` on CHAIN3(INK).
 
     ![secret](../assets/milestone-2/ft/transfer%20on%20chain3.png)
 
-  - 6.6 the token balance of `user2` on CHAIN3(INK) is `33`.
+  - 6.9 the token balance of `user2` on CHAIN3(INK) is `33`.
   
     ![secret](../assets/milestone-2/ft/result%20on%20chain3.png)
 
 The test will be over in about 5 minutes, and `Test competed and successfull` will be printed in the terminal if successful.
-
-#### Test of fungible tokens with dockered synchronizer(Optional)
-
-```sh
-node src/index.js -t ft --docker
-```
-
-Everything is the same as the above test, except that you must launch the synchronizer yourself.
-
-When the following message is printed in the terminal:
-
-```sh
-Have you launched the synchronizer(y)?
-```
-
-Open another terminal, enter the synchronizer directory, launch the synchronizer
-
-```sh
-cd submodules/omniverse-synchronizer
-sudo ./docker/dockerize.sh test test --version
-sudo bash ./docker/launch-synchronizer.sh
-```
-
-You can check the logs of the synchronizer
-
-```sh
-sudo docker logs -f test-test
-```
-
-Then continue the test by inputing 'y' and press 'Enter' in the terminal running test
 
 ### Test of swap
 
@@ -218,17 +191,11 @@ There are several steps in the full test flow
 
 The test will be over in about 8 minutes, and `Test competed and success` will be printed in the terminal if successful.
 
-#### Test of swap with dockered synchronizer(Optional)
-
-```sh
-node src/index.js -t swap --docker
-```
-
-The operating procedure is the same as shown in [Test of Fungible tokens with dockered synchronizer(Optional)](#test-of-fungible-tokens-with-dockered-synchronizer(Optional))
-
 ## Additional
 
-If the test is executed successfully, the program will not be terminated `^C` is inputed, we can use tools for different networks to interact with the O-DLT.
+**Note that this is not recommended, and instead, close the test by `^C` and follow [auto-deployment](../Auto-Deployment.md) to deploy your own `O-DLT` tokens in an new environment.**  
+
+If the test is executed successfully, the program will not be terminated until `^C` is inputed, we can use tools for different networks to interact with the O-DLT.  
 
 The tools are
 
@@ -252,5 +219,3 @@ node index.js -h // For help
 cd submodules/omniverse-swap-tools/omniverse-helper
 node index.js -h // For help
 ```
-
-**There is a [tutorial video]() showing the whole operation**
