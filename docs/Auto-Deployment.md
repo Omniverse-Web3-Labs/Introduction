@@ -11,7 +11,7 @@
 
 We have made Docker images for these nodes, so you can launch nodes easily
 ```
-wget xxxxxx
+wget https://omniversedlt.s3.amazonaws.com/docker-compose.yaml
 docker-compose up -d
 ```
 
@@ -39,7 +39,7 @@ cp config/deploy.template.json config/default.json
 
 Open `config/default.json`
 
-`tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as what you like
+`tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as what you like.
 
 ```
 "tokenInfo": {
@@ -64,18 +64,22 @@ We have configured this file for this demonstration, so you do not need to chang
 ### Auto-deployment and initializations
 
 ```
-node src/index.js -d ft
+node src/index.js -d ft [-c <NUM>]
 ```
+
+`<NUM>` indicates how many tokens you want to deploy, the token name will be picked from the field `tokenInfo` in `config/default`. If the number is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
 
 This process is almost the same as [test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md#explaination-of-fungible-tokens-test), except that it will not run test cases.
     
 The following things will be done in the deployment process
-    - Deployment of the related (set in the `default.json`) Ink! ERC-20 
-    - Deployment of the related (set in the `default.json`) EVM ERC-20 
-    - Deployment of the related (set in the `default.json`) Pallet ERC-20
-    - Deployment of Pallet Swap
-    - members, cooling time, decimal
-    - gas tokens for accounts
+    - Deployment of the related (set in the `default.json`) Ink! omniverse token 
+    - Deployment of the related (set in the `default.json`) EVM omniverse token 
+    - Deployment of the related (set in the `default.json`) Pallet omniverse token
+    - Initilazation of omniverse tokens
+        - Set members
+        - Set cooling time
+        - Set Decimal
+    - Transfer gas tokens to testing accounts
 
 ## Launch the auto-synchronizer
 
