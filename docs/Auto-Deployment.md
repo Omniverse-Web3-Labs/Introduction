@@ -56,12 +56,13 @@ node src/index.js -i
 
 ### Configure
 
-Enter the working directory, replace `config/default.json` with `config/deploy.template.json`
+Enter the working directory, replace `omniverse-system-test/config/default.json` with `omniverse-system-test/config/deploy.template.json`
 ```
+cd omniverse-system-test
 cp config/deploy.template.json config/default.json
 ```
 
-Open `config/default.json`
+Open `omniverse-system-test/config/default.json`
 
 `tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as what you like.
 
@@ -112,7 +113,7 @@ You can use the `omniverse-synchronizer` in `./submodules`
 
 ### Configure
 
-The config file `config/default.json` and secret key file `.secret` will be created automatically after you run deploy command. You do not need to change it here, you can refer [Omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/blob/milestone-2/README.md) for more information.
+The config file `omniverse-system-test/submodules/omniverse-synchronizer/config/default.json` and secret key file `omniverse-system-test//submodules/omniverse-synchronizer/config/.secret` will be created automatically after you run deploy command. You do not need to change it here, you can refer [Omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/blob/milestone-2/README.md) for more information.
 
 ### Launch the synchronizer
 
@@ -166,7 +167,7 @@ You can use different working directory of the synchronizer, just change the fie
 There are only four additional steps to deploy contracts on live EVM chains
 
 1. Prepare two accounts with tokens
-2. Add a field `accounts` in `config/default.json`
+2. Add a field `accounts` in `omniverse-system-test/config/default.json`
 ```
 "accounts": "./config/.secret"
 ```
@@ -177,7 +178,7 @@ There are only four additional steps to deploy contracts on live EVM chains
     "0x5678..."
 ]
 ```
-4. Change the field `networks` in `config/default.json`
+4. Change the field `networks` in `omniverse-system-test/config/default.json`
 
 For example, to deploy on Ethereum
 ```
