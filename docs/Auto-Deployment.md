@@ -149,7 +149,7 @@ sudo docker logs -f test-test
 
 You can use different working directory of the synchronizer, just change the field in the `docker-compose.yaml` as following. If you are running multiple synchronizers, you must use different working directory.
 
-
+![](./assets/auto-deploy/change%20volume.png)
 
 ## Note(Option) 
 
