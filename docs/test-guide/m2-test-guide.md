@@ -1,8 +1,8 @@
 # Test Guide for Milestone 2 from the W3F Grants
 
-This document will show you how to deploy and test O-DLT.
+This document will show you how to test O-DLT.
 
-The [system test tool](https://github.com/Omniverse-Web3-Labs/omniverse-system-test) is used to make the e2e test for the O-DLT, as well as deploy contracts on live networks.
+The [system test tool](https://github.com/Omniverse-Web3-Labs/omniverse-system-test/tree/milestone-2) is used to make the e2e test for the O-DLT.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ git clone -b milestone-2 --recursive https://github.com/Omniverse-Web3-Labs/omni
 
 ### Install
 
-Enter the work directory, and execute the following commands
+Enter the working directory, and execute the following commands
 ```
 npm install
 ```
@@ -36,7 +36,14 @@ node src/index.js -i
 
 ### Test of fungible tokens
 
-#### Introduction
+#### Automatical test of fungible tokens
+Only one command is needed to execute the test, the output of which will show you what the test is doing. The output will be explained in detail in [Explaination of fungible tokens test](#explaination-of-fungible-tokens-test)
+
+```
+node src/index.js -t ft
+```
+
+#### Explaination of fungible tokens test
 
 There are several steps in the full test flow  
 - 1 Initialize the test
@@ -48,11 +55,6 @@ There are several steps in the full test flow
     - 5.2 `user1` transfer 11 token to `user2`
     - 5.3 Check the balance of `user2`
     - 5.4 Repeat 5.1 ~ 5.3 on all supported networks
-
-#### Automatical test of fungible tokens
-```
-node src/index.js -t ft
-```
 
 The test will be over in about 5 minutes, and `Test competed and success` will be printed in the terminal if successful.
 
