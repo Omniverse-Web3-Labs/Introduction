@@ -71,6 +71,9 @@ Open `omniverse-system-test/config/default.json`
         "token": [{
             "name": "SKYWALKER",
             "symbol": "SKYWALKER"
+        }, {
+            "name": "EARTHWALKER",
+            "symbol": "EARTHWALKER"
         }]
     },
 ```
