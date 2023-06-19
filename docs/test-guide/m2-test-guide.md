@@ -81,39 +81,39 @@ There are several steps in the full test flow, which is executed absolutely auto
 
   Mint and transfer tokens omniversely, and the transactions will be synchronized among the three chains by the synchronizer, more over, the transactions will be verified **simutanously and independently**. The verifications are just based on **crypto signature**, which makes it absolutely trustless.  
 
-  - 6.1 CHAIN1(EVM) executes the mint transaction with `100` token to `user1` on .
+  - 6.1 Submit a mint transaction with `100` token to `user1` on CHAIN1(EVM).
 
     ![secret](../assets/milestone-2/ft/mint%20on%20chain1.png)
 
-  - 6.2 CHAIN1(EVM) executes the transfer transaction with `11` token to `user2`.
+  - 6.2 Submit a transfer transaction with `11` token to `user2`  on CHAIN1(EVM).
 
     ![secret](../assets/milestone-2/ft/transfer%20on%20chain1.png)
 
-  - 6.3 the token balance of `user2` on CHAIN1(EVM) is `11`.
+  - 6.3 the token balances of `user2` on all chains are all `11` due to the synchronization.
 
     ![secret](../assets/milestone-2/ft/result%20on%20chain1.png)
 
-  - 6.4 CHAIN2(SUBSTRATE) executes the mint transaction with `100` token to `user1`.
+  - 6.4 submit a mint transaction with `100` token to `user1` on CHAIN2(SUBSTRATE).
 
     ![secret](../assets/milestone-2/ft/mint%20on%20chain2.png)
 
-  - 6.5 CHAIN2(SUBSTRATE) executes the transfer transaction with `11` token to `user2`.
+  - 6.5 Submit a transfer transaction with `11` token to `user2` on CHAIN2(SUBSTRATE).
 
     ![secret](../assets/milestone-2/ft/transfer%20on%20chain2.png)
 
-  - 6.6 the token balance of `user2` on CHAIN2(SUBSTRATE) is `22`.
+  - 6.6 the token balances of `user2` on all chains are `22` due to the synchronization.
 
     ![secret](../assets/milestone-2/ft/result%20on%20chain2.png)
 
-  - 6.7 CHAIN3(INK) executes the mint transaction with `100` token to `user1`.
+  - 6.7 Submit a mint transaction with `100` token to `user1` on CHAIN3(INK).
 
     ![secret](../assets/milestone-2/ft/mint%20on%20chain3.png)
 
-  - 6.8 CHAIN3(INK) executes the transfer transaction with `11` token to `user2` on CHAIN3(INK).
+  - 6.8 Submit a transfer transaction with `11` token to `user2` on CHAIN3(INK).
 
     ![secret](../assets/milestone-2/ft/transfer%20on%20chain3.png)
 
-  - 6.9 the token balance of `user2` on CHAIN3(INK) is `33`.
+  - 6.9 the token balances of `user2` on all chains are `33` due to the synchronization.
   
     ![secret](../assets/milestone-2/ft/result%20on%20chain3.png)
 
@@ -163,25 +163,25 @@ There are several steps in the full test flow
 
 - 6 Test
 
-  - 6.1 Mint `10001000000` token of `SKYWALKER` and `SKYWALKER1` to `user1` on CHAIN2(SUBSTRATE).
+  - 6.1 Mint `10001000000` token of `SKYWALKER` and `EARTHWALKER` to `user1` on CHAIN2(SUBSTRATE).
   
     ![secret](../assets/milestone-2/swap/mint%20token1%20on%20substrate.png)
 
     ![secret](../assets/milestone-2/swap/mint%20token2%20on%20substrate.png)
 
-  - 6.2 Deposit `10001000000` token of `SKYWALKER` and `SKYWALKER1` into swap.
+  - 6.2 Deposit `10001000000` token of `SKYWALKER` and `EARTHWALKER` into swap.
 
     ![secret](../assets/milestone-2/swap/deposit.png)
 
-  - 6.3 Create/add liquidity for `SKYWALKER` and `SKYWALKER1`.
+  - 6.3 Create/add liquidity for `SKYWALKER` and `EARTHWALKER`.
 
     ![secret](../assets/milestone-2/swap/add%20liquidity.jpg)
 
-  - 6.4 Swap `100 SKYWALKER` to get `9999 SKYWALKER1`.
+  - 6.4 Swap `100 SKYWALKER` to get `9999 EARTHWALKER`.
 
     ![secret](../assets/milestone-2/swap/swap%20x%20to%20y.jpg)
 
-  - 6.5 Swap `10000 SKYWALKER1` to get `100 SKYWALKER1`.
+  - 6.5 Swap `10000 EARTHWALKER` to get `100 EARTHWALKER`.
 
     ![secret](../assets/milestone-2/swap/swap%20y%20to%20x.png)
 
