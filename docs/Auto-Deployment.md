@@ -15,6 +15,8 @@ wget https://omniversedlt.s3.amazonaws.com/docker-compose.yaml
 docker-compose up -d
 ```
 
+![](./assets/auto-deploy/launch%20nodes.png)
+
 The following chains will be installed and launched locally:
 - Ink! Parachain
 - Swap Parachain
@@ -80,6 +82,7 @@ Open `config/default.json`
 - omniverseChainId: The omniverse chain id is set for all public chains, namely each chain will have a unique omniverse chain id. Currently, you can set any id the this field, just keep it unique in the configuration.
 - coolingDown: Cooling down time, the interval between two omniverse transactions, just let what it is if you use local nodes.
 - chainId: The field is the EVM chain id, so it is only used when the chain type is `EVM`.
+- chainName: The chain name you assign to the chain.
 
 We have configured this file for this demonstration, so you do not need to change it.
 
@@ -119,7 +122,11 @@ cd submodules/omniverse-synchronizer
 sudo ./docker/dockerize.sh test test --version
 ```
 
+![](./assets/auto-deploy/build%20docker.png)
+
 The docker image `test-test:1.0.0` will be built, `1.0.0` is derived from the version in the `package.json`.
+
+![](./assets/auto-deploy/images.png)
 
 You can change the image name, and push to a docker image repository for future use. We do not need to do that in this tutorial here.
 
@@ -129,12 +136,14 @@ sudo bash ./docker/launch-synchronizer.sh
 ```
 
 You can see outputs like this
-![](./assets/auto-deployment/launch-synchronizer.png)
+![](./assets/auto-deploy/synchronizer.png)
 
 You can check the logs of the synchronizer
 ```
 sudo docker logs -f test-test
 ```
+
+![](./assets/auto-deploy/docker%20logs.png)
 
 ## Note(Option) 
 
@@ -148,4 +157,32 @@ sudo docker logs -f test-test
 
 - Deploy on public EVM chains
 
+There are only four additional steps to deploy contracts on live EVM chains
 
+1. Prepare two accounts with tokens
+2. Add a field `accounts` in `config/default.json`
+```
+"accounts": "./config/.secret"
+```
+3. Add a secret key file `.secret` in the directory `config`, and input private keys in the file
+```
+[
+    "0x1234...",
+    "0x5678..."
+]
+```
+4. Change the field `networks` in `config/default.json`
+
+For example, to deploy on Ethereum
+```
+"networks": [
+        {
+            "rpc": "https://eth.llamarpc.com",
+            "ws": "wss://eth.llamarpc.com",
+            "chainId": 1,
+            "chainType": "EVM",
+            "coolingDown": 10,
+            "chainName": "ETHEREUM"
+        }
+    ],
+```
