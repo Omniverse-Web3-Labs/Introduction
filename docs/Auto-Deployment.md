@@ -82,6 +82,8 @@ node src/index.js -i
 
 #### Replace config file
 
+**Note that:** There is a little difference between the configurations of `deploy` and `test`, mainly the field `networks`. Refer [Tool config](#tool-config) for more information, and keep in mind not to mix them up.
+
 Enter the working directory, replace `omniverse-system-test/config/default.json` with `omniverse-system-test/config/deploy.template.json`
 ```
 cd omniverse-system-test
@@ -104,7 +106,7 @@ About `-c <NUM>`:
 
 This process is almost the same as [test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md#explaination-of-fungible-tokens-test), except that it will not run test cases.
 
-If successful, you can see the outputs like this, input **^C** to stop
+If successful, you can see the outputs like this, **input ^C to stop**
 
 ![](./assets/auto-deploy/deploy%20finish.png)
     
@@ -207,13 +209,19 @@ When deploying contracts, token names will be picked from the field `tokenInfo`.
 - **networks**
 `networks` contains the chains on which you will deploy omniverse tokens
 
-- rpc: `http` end point of a node connected to the network
-- ws: `websocket` end point of a node connected to the network
+- rpc(only for deployment): `http` end point of a node connected to the network
+- ws(only for deployment): `websocket` end point of a node connected to the network
 - chainType: What kind of chain you will deploy omniverse token on, currently you can choose: EVM, INK, SUBSTRATE
-- omniverseChainId: The omniverse chain id is set for all public chains, namely each chain will have a unique omniverse chain id. Currently, you can set any id the this field, just keep it unique in the configuration.
+- omniverseChainId(only for deployment): The omniverse chain id is set for all public chains, namely each chain will have a unique omniverse chain id. Currently, you can set any id the this field, just keep it unique in the configuration.
 - coolingDown: Cooling down time, the interval between two omniverse transactions, just let what it is if you use local nodes.
-- chainId: The field is the EVM chain id, so it is only used when the chain type is `EVM`.
-- chainName: The chain name you assign to the chain.
+- chainId(only for deployment): The field is the EVM chain id, so it is only used when the chain type is `EVM`.
+- chainName(only for deployment): The chain name you assign to the chain.
+
+- **accounts**
+
+- It is optional
+- If it is absent, 10 built-in test accounts will be used
+- If the field is set, such as `"accounts": "./config/.secret"`, it indicates secret keys are stored in `./config/.secret`. [This](https://github.com/Omniverse-Web3-Labs/omniverse-system-test/tree/milestone-2/config/.secret.template) is a template of the secret key file. **Make sure that there are enough tokens in these accounts before deploying contracts**.
 
 ### Launch more auto-synchronizers
 
