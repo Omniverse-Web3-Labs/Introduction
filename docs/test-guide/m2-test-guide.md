@@ -54,7 +54,7 @@ node src/index.js -i
 Only one command is needed to execute the test, the output of which will show you what the test is doing. The output will be explained in detail in [Explaination of tokens test](#explaination-of-tokens-test)
 
 ```sh
-node src/index.js -t ft
+node src/index.js -t token
 ```
 
 #### Explaination of tokens test
