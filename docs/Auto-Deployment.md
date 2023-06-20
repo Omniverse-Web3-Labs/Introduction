@@ -1,5 +1,21 @@
 # Auto-Deployment
 
+From this tutorial, you can learn how to deploy an Omniverse token and launch the synchronizer.
+
+- [Auto-deploy `O-DLT` token and initialization](#auto-deploy-o-dlt-token-and-initialization)
+
+  - [Installation](#install)
+  
+  - [Configure omniverse token](#configure)
+
+  - [Auto-deployment and initializations](#auto-deployment-and-initializations)
+
+- [Launch the auto-synchronizer](#launch-the-auto-synchronizer)
+
+  - [Configure synchronizer](#configure-1)
+
+  - [Launch the auto-synchronizer](#launch-the-auto-synchronizer)
+
 ## Prerequisites
 
 - Ubuntu 20.04
