@@ -18,6 +18,16 @@ From this tutorial, you can learn how to deploy an Omniverse token and launch th
 
   - [Launch synchronizers with Docker](#launch-the-auto-synchronizer)
 
+- [Note](#noteoption)
+
+  - [Specification of system test tool configurations](#tool-config)
+
+  - [Launch more synchronizers](#launch-more-auto-synchronizers)
+
+  - [Create more omniverse tokens](#create-more-omniverse-tokens)
+
+  - [Deploy on public EVM chains](#deploy-on-public-evm-chains)
+
 ## Prerequisites
 
 - Ubuntu 20.04
