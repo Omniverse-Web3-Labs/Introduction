@@ -84,31 +84,33 @@ node src/index.js -i
 
 **Note that:** There is a little difference between the configurations of `deploy` and `test`, mainly the field `networks`. Refer [Tool config](#tool-config) for more information, and keep in mind not to mix them up.
 
-Enter the working directory, replace `omniverse-system-test/config/default.json` with `omniverse-system-test/config/deploy.template.json`
-```
-cd omniverse-system-test
-cp config/deploy.template.json config/default.json
-```
+- Enter the working directory, replace `omniverse-system-test/config/default.json` with `omniverse-system-test/config/deploy.template.json`
+    ```
+    cd omniverse-system-test
+    cp config/deploy.template.json config/default.json
+    ```
 
-#### Change config(Optional)
+#### Change config (Optional)
 
-For this demonstration, you do not need to change anything, you can refer [Tool config](#tool-config) for more details.
+- For this **local deployment**, you do not need to change anything. You can refer [Tool config](#tool-config) for more details.
 
 ### Auto-deployment and initializations
 
 ```
-node src/index.js -d token [-c <NUM>]
+node src/index.js -d token -c 2
 ```
+
 About `-c <NUM>`:
 - The parameter is optional
 - It indicates how many tokens you want to deploy
 - If the parameter is absent, it is equivalent to `node src/index.js -d token -c 1`
+- Here we use `-c 2`, as we set two `O-DLT` tokens in the `omniverse-system-test/config/default.json` for the convenience of trying the swap functions.  
 
-This process is almost the same as [test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md#explaination-of-fungible-tokens-test), except that it will not run test cases.
+This process is almost the same as [test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md#explaination-of-fungible-tokens-test), except that it will not run test cases.  
 
-If successful, you can see the outputs like this, **input ^C to stop**
+- If successful, you can see the outputs like this, **input ^C to stop**
 
-![](./assets/auto-deploy/deploy%20finish.png)
+    ![](./assets/auto-deploy/deploy%20finish.png)
     
 The following things will be done in the deployment process
 - Deployment of the related (set in the `default.json`) Ink! omniverse token 
@@ -122,41 +124,43 @@ The following things will be done in the deployment process
 
 ## Launch the auto-synchronizer
 
-You can use the `omniverse-system-test/submodules/omniverse-synchronizer`
-
 ### Configure
 
-The config file `omniverse-system-test/submodules/omniverse-synchronizer/config/default.json` and secret key file `omniverse-system-test//submodules/omniverse-synchronizer/config/.secret` will be created automatically when you running deployment command, you do not need to change it.
+The config file `omniverse-system-test/submodules/omniverse-synchronizer/config/default.json` and secret key file `omniverse-system-test//submodules/omniverse-synchronizer/config/.secret` will be created automatically after being dployed, and you can directly use the configure in `omniverse-system-test/submodules/omniverse-synchronizer/config` if you deploy locally.  
 
-You can refer [Omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/omniverse-synchronizer/blob/milestone-2/README.md) for more information.
+**For local test**, the above is enough, but **for your own situation**, you *SHALL* need to use your own account to launch the synchronizers, referr to the [launch-more-auto-synchronizers](#launch-more-auto-synchronizers).  
 
 ### Launch the synchronizer
 
 #### Make a working directory
 
-Make a directory as the working directory of the synchronizer, **you can use any directory as you like**
-```
+Make a directory as the working directory of the synchronizer, **you can use any directory as you like**. Here we use `/opt/omniverse/node/test/test/latest/` to be the example.  
+
+```sh
 sudo mkdir -p /opt/omniverse/node/test/test/latest/
 ```
 
 #### Download `docker-compose.yaml`
 
-Download the `docker-compose.yaml` file into the synchronizer working directory
-```
+Download the `docker-compose.yaml` file into the synchronizer working directory  
+
+```sh
 sudo wget https://omniversedlt.s3.amazonaws.com/synchronizer/docker-compose.yaml -O /opt/omniverse/node/test/test/latest/docker-compose.yaml
 ```
 
 #### Prepare config files
 
-Copy the config directory of the synchronizer project in `omniverse-system-test/submodules` into the synchronizer working directory
-```
+Copy the config directory of the synchronizer project in `omniverse-system-test/submodules` into the synchronizer working directory. For example:  
+
+```sh
 sudo cp -r ./submodules/omniverse-synchronizer/config /opt/omniverse/node/test/test/latest/
 ```
 
 #### Launch
 
-Execute the following command to launch the synchronizer.
-```
+Execute the following command to launch the synchronizer in your own working directory.  
+
+```sh
 cd /opt/omniverse/node/test/test/latest/
 docker-compose up -d
 ```
@@ -167,7 +171,7 @@ You can see outputs like this
 
 - View logs
 
-    ```
+    ```sh
     sudo docker logs -f test-test
     ```
 
@@ -179,7 +183,7 @@ You can see outputs like this
 
     In the working directory, execute the following command
 
-    ```
+    ```sh
     docker-compose down
     ```
 
@@ -193,7 +197,7 @@ Open `omniverse-system-test/config/default.json`
 
     `tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as you want.
 
-    ```
+    ```sh
     "tokenInfo": {
             "token": [{
                 "name": "SKYWALKER",
@@ -228,11 +232,13 @@ Open `omniverse-system-test/config/default.json`
 
 ### Launch more auto-synchronizers
 
-If you want to start more auto-synchronizers, repeat the [Launch the auto-synchronizer](#launch-the-auto-synchronizer), but keep in mind that **you must use different working directories**.
+If you want to start more auto-synchronizers, repeat the [Launch the auto-synchronizer](#launch-the-auto-synchronizer), but keep in mind that **you *MUST* use different working directories** and **it's better for you to use other private key in the `.secret`, and *MAKE SURE* you have gas tokens on all chains**
 
 ### Create more omniverse tokens
 
-If you want to create more omniverse tokens, repeat the [Auto-deploy `O-DLT` token and initillization](#auto-deploy-o-dlt-token-and-initillization) and [Launch the aotu-synchronizer](#launch-the-aotu-synchronizer)
+If you want to create more omniverse tokens, repeat the [Auto-deploy `O-DLT` token and initillization](#auto-deploy-o-dlt-token-and-initillization) and [Launch the aotu-synchronizer](#launch-the-aotu-synchronizer).
+
+***Rmember* to set the tokens' names you like in the `omniverse-system-test/config/default.json`**, actually, you can deploy many `O-DLT` tokens in one time, look the command [`node src/index.js -d token -c 2`](#auto-deployment-and-initializations)
 
 ### Deploy on public EVM chains
 
@@ -240,16 +246,20 @@ There are only four additional steps to deploy contracts on live EVM chains
 
 1. Prepare two accounts with tokens
 2. Add a field `accounts` in `omniverse-system-test/config/default.json`
+
     ```
     "accounts": "./config/.secret"
     ```
+
 3. Add a secret key file `.secret` in the directory `config`, and input private keys in the file
+
     ```
     [
         "<OWNER_PRIVATE_KEY>",
         "<PORTER_PRIVATE_KEY>"
     ]
     ```
+
     - The format of the private key is like this `0xb97de1848f97378ee439b37e776ffe11a2fff415b2f93dc240b2d16e9c18xxxx`
     - `<OWNER_PRIVATE_KEY>` is used to deploy contracts
     - `<PORTER_PRIVATE_KEY>` is used in the synchronizer to synchronize omniverse transactions
@@ -257,6 +267,7 @@ There are only four additional steps to deploy contracts on live EVM chains
 4. Change the field `networks` in `omniverse-system-test/config/default.json`
 
     For example, to deploy on Ethereum
+
     ```
     "networks": [
             {

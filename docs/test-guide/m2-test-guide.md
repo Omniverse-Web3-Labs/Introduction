@@ -33,11 +33,11 @@ git clone -b milestone-2 --recursive https://github.com/Omniverse-Web3-Labs/omni
 
 ### Install
 
-Enter the working directory, and execute the following commands
+- Enter the working directory, and execute the following commands
 
-```sh
-npm install
-```
+  ```sh
+  npm install
+  ```
 
 ### Install for related projects
 
@@ -46,6 +46,12 @@ node src/index.js -i
 ```
 
 ## Run test
+
+- Update the configures to the test environment
+
+  ```sh
+  git checkout config/default.json
+  ```
 
 ### Test of tokens
 
