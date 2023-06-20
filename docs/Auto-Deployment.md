@@ -104,7 +104,7 @@ About `-c <NUM>`:
 
 This process is almost the same as [test guide](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/test-guide/m2-test-guide.md#explaination-of-fungible-tokens-test), except that it will not run test cases.
 
-If successful, you can see the outputs like this, input *^C* to stop
+If successful, you can see the outputs like this, input **^C** to stop
 
 ![](./assets/auto-deploy/deploy%20finish.png)
     
@@ -132,7 +132,7 @@ You can refer [Omniverse-synchronizer](https://github.com/Omniverse-Web3-Labs/om
 
 #### Make a working directory
 
-Make a directory as the working directory of the synchronizer, *you can use any directory as you like*
+Make a directory as the working directory of the synchronizer, **you can use any directory as you like**
 ```
 sudo mkdir -p /opt/omniverse/node/test/test/latest/
 ```
@@ -187,7 +187,7 @@ docker-compose down
 
 Open `omniverse-system-test/config/default.json`
 
-- *tokenInfo*
+- **tokenInfo**
 `tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as you want.
 
 ```
@@ -204,7 +204,7 @@ Open `omniverse-system-test/config/default.json`
 
 When deploying contracts, token names will be picked from the field `tokenInfo`. If the number of the contracts to be deployed is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
 
-- *networks*
+- **networks**
 `networks` contains the chains on which you will deploy omniverse tokens
 
 - rpc: `http` end point of a node connected to the network
@@ -217,7 +217,7 @@ When deploying contracts, token names will be picked from the field `tokenInfo`.
 
 ### Launch more auto-synchronizers
 
-If you want to start more auto-synchronizers, repeat the [Launch the auto-synchronizer](#launch-the-auto-synchronizer), but keep in mind that *you must use different working directories*.
+If you want to start more auto-synchronizers, repeat the [Launch the auto-synchronizer](#launch-the-auto-synchronizer), but keep in mind that **you must use different working directories**.
 
 ### Create more omniverse tokens
 
