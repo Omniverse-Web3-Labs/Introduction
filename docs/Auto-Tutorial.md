@@ -45,12 +45,6 @@ EVM address 0xc0d8F541Ab8B71F20c10261818F2F401e8194049
 ...
 ```
 
-You can utilize the following command to switch the account that you want to use.
-
-```sh
-node index.js -s 4
-```
-
 ### Omniverse Transactions
 
 All operations are performed within the `omniverse-helper` directory. Sender private key in file `.secret`.
@@ -65,6 +59,12 @@ All operations are performed within the `omniverse-helper` directory. Sender pri
     node index.js -s 0
     node index.js --mint CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b,100
     ```
+
+- In the above example, the address is `account 4`. You can utilize the following command to switch the account that you want to use.
+
+  ```sh
+  node index.js -s 4
+  ```
 
 - Transfer
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L164)
@@ -91,33 +91,39 @@ All operations are performed within the `omniverse-helper` directory. Sender pri
 
 All operations are performed within the `omniverse-helper` directory. All operations are initiated by `Account 4`.
 
-```sh
-node index.js -s 4
-```
+- Mint enough token to `Account 4`
+
+  ```sh
+  node index.js -s 0
+
+  node index.js --mint CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b,10000000
+
+  node index.js --mint CHAIN2,EARTHWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b,10000000
+  ```
 
 - Users deposit to the swap platform
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L314)
   - CLI: `node index.js --deposit CHAIN_NAME,TOKEN_ID,AMOUNT`.
   - Instruction: deposit `AMOUNT` `TOKEN_ID` into the swap.
-  - example: before deposit, we have minted `1001000 SKYWALKER` and `10000 EARTHWALKER` for `Account 4`
+  - example: before deposit, we have minted `6,000,000 SKYWALKER` and `2,000,000 EARTHWALKER` for `Account 4`
 
     ```sh
     node index.js -s 4
-    node index.js --deposit CHAIN2,SKYWALKER,1001000
-    node index.js --deposit CHAIN2,EARTHWALKER,10000
+    node index.js --deposit CHAIN2,SKYWALKER,6000000
+    node index.js --deposit CHAIN2,EARTHWALKER,2000000
     ```
 
 - Create Token Pool or add liquidity
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L404)
-  - CLI: `node index.js --addLiquidity CHAIN_NAME,TRADING_PAIR_ID,TOKNE_X_ID,TOKEN_X_AMOUNT,TOKEN_Y_ID,TOKEN_Y_AMOUT`.
+  - CLI: `node index.js --addLiquidity CHAIN_NAME,TRADING_PAIR_ID,TOKNE_X_ID,TOKEN_X_AMOUNT,TOKEN_Y_ID,TOKEN_Y_AMOUT`
   - Instruction: if `TRADING_PAIR_ID` swap pool not exist than create, and add liquidity to `TRADING_PAIR_ID` swap pool.
   - example:
   
     ```sh
-    node index.js --addLiquidity CHAIN2,SKYWALKER/EARTHWALKER,SKYWALKER,1000000,EARTHWALKER,10000
+    node index.js --addLiquidity CHAIN2,SKYWALKER/EARTHWALKER,SKYWALKER,5000000,EARTHWALKER,1000000
     ```
 
-    **note:** before create token pool, you need have deposited a sufficient amount of `TOKNE_X_ID` and `TOKNE_Y_ID`. For this example, we have deposited `1001000 SKYWALKER` and `10000 EARTHWALKER`.
+    **note:** before create token pool, you need have deposited a sufficient amount of `TOKNE_X_ID` and `TOKNE_Y_ID`. For this example, we have deposited `6,000,000 SKYWALKER` and `2,000,000 EARTHWALKER`.
 
 - Users make swap from `TOKEN_X_ID` to `TOKEN_Y_ID`
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L375)
@@ -139,6 +145,18 @@ node index.js -s 4
     node index.js --swapY2X CHAIN2,SKYWALKER/EARTHWALKER,10
     ```
 
+- Users query the `TOKEN_ID` balance in the swap
+  - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L243)
+  - CLI: `node index.js --balanceOfSwap CHAIN_NAME,TOKEN_ID,ACCOUNT`
+  - Instruction: query the `TOKEN_ID` balance in the swap of `ACCOUNT`
+  - example:
+
+    ```sh
+    node index.js --balanceOfSwap CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
+
+    node index.js --balanceOfSwap CHAIN2,EARTHWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
+    ```
+
 - Users withdraw from the swap platform
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L337)
   - CLI: `node index.js --withdraw CHAIN_NAME,TOKEN,AMOUNT`
@@ -146,17 +164,13 @@ node index.js -s 4
   - example:
   
     ```sh
-    node index.js --withdraw CHAIN2,SKYWALKER,10
-    ```
+    # check the omniverse balance of `account 4` before withdraw
+    node index.js --omniBalance CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
 
-- Users query the `TOKEN_ID` deposited balance in the swap
-  - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L243)
-  - CLI: `node index.js --balanceOfSwap CHAIN_NAME,TOKEN_ID,ACCOUNT`
-  - Instruction: query the `TOKEN_ID` deposited balance in the swap of `ACCOUNT`
-  - example:
+    node index.js --withdraw CHAIN2,SKYWALKER,10000
 
-    ```sh
-    node index.js --balanceOfSwap CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
+    # check the omniverse balance of `account 4` after withdraw
+    node index.js --omniBalance CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
     ```
 
 For all transaction operations, it is highly recommended to utilize the tool. The tool facilitates the generation of the signature required by Omniverse, and query results can be conveniently viewed through the browser of [polkadot{.js}](https://polkadot.js.org/).
