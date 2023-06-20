@@ -4,20 +4,52 @@ This guide descripes how to make omniverse operations with the omniverse CLI too
 
 ## Operations and Codes
 
-Before commencing this tutorial, you should have generated a minimum of `O-DLT` token. To perform swap, you will need at least two `O-DLT` tokens. Now we have created two `O-DLT` tokens by [Auto-Deployment](./Auto-Deployment.md), the tokens id are `SKYWALKER` and `SKYWALKER1` respectively.
+Before commencing this tutorial, you should have generated a minimum of `O-DLT` token. To perform swap, you will need at least two `O-DLT` tokens. Now we have created two `O-DLT` tokens by [Auto-Deployment](./Auto-Deployment.md), the tokens id are `SKYWALKER` and `EARTHWALKER` respectively. After deployment, The following chains will be installed and launched locally with rpc addresses:
+
+- Ink! Parachain: ws://127.0.0.1:10102
+
+- Swap Parachain: ws://127.0.0.1:10101
+
+![secret](./assets/swap-ink-parachain.jpg)
 
 Command-line tool:
 
 ```sh
-git clone git@github.com:Omniverse-Web3-Labs/omniverse-swap-tools.git
-# before use
-cd omniverse-helper
-npm install
+cd omniverse-system-test/submodules/omniverse-swap-tools/omniverse-helper
 ```
 
 ### Create Accounts
 
-- You can create your omniverse accounts and get some gas tokens like [this](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/Manually-Tutorial.md#create-account).  
+- You can create your omniverse accounts and get some gas tokens like [this](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/Manually-Tutorial.md#create-account).
+
+### Show all accounts
+
+You can utilize the following command to display all the available accounts you can use. For the purpose of testing, a variety of accounts have been made available. `Account 0` is the owner of Omniverse token, `Account 1` serves as the synchronizer, `Account 2` is for swap operations, and while the remaining accounts are general users.
+
+```sh
+node index.js -a
+
+##########################################################
+Account 0
+Private key 0x0cc0c2de7e8cxxxxxxxxxxsssxxxxxxxxxxxxxxxxxxxxx61055481df7014f7fa
+Omniverse Account 0xb0c4ae6f28a5579cbeddbf40b2209a5296baf7a4dc818f909e801729ecb5e663dce22598685e985a6ed1a557cf2145deba5290418b3cc00680a90accc9b93522
+Substrate address 5EoWfEE2T7SE3fXUg6hFFzXTJnexBVedXJWt588tfQWVtzsP
+EVM address 0xe092b1fa25DF5786D151246E492Eed3d15EA4dAA
+##########################################################
+Account 1
+Private key 0xb97de1848f97378xxxxxxxxxxsssxxxxxxxxxxxxxxxxxxxxx0b2d16e9c184ba9
+Omniverse Account 0x99f5789b8b0d903a6e868c5fb9971eedde37da046e69d49c903a1b33167e0f76d1f1269628bfcff54e0581a0b019502394754e900dcbb69bf30010d51967d780
+Substrate address 5HPUJrAvRtADLw6K6pfZB6yB1ZSDiNEh2RTFdNM4oA1PaVm4
+EVM address 0xc0d8F541Ab8B71F20c10261818F2F401e8194049
+##########################################################
+...
+```
+
+You can utilize the following command to switch the account that you want to use.
+
+```sh
+node index.js -s 4
+```
 
 ### Omniverse Transactions
 
@@ -25,96 +57,108 @@ All operations are performed within the `omniverse-helper` directory. Sender pri
 
 - Mint
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L181)
-  - CLI: `node index.js -m CHAIN_NAME,TOKEN_ID,RECIPIENT,AMOUNT`.
+  - CLI: `node index.js --mint CHAIN_NAME,TOKEN_ID,RECIPIENT,AMOUNT`.
   - Instruction: mint `AMOUNT` `TOKNE_ID` to `RECIPIENT`, the sender must be the owner of `TOKEN_ID`.
-  - example:
+  - example: for this example, the owner of `SKYWALKER` is `Account 0` and mint to `Account 4`
 
     ```sh
-    node index.js -m SUBSTRATE,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b,100
+    node index.js -s 0
+    node index.js --mint CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b,100
     ```
 
 - Transfer
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L164)
-  - CLI: `node index.js -t CHAIN_NAME,TOKEN_ID,RECIPIENT,AMOUNT`.
+  - CLI: `node index.js --transfer CHAIN_NAME,TOKEN_ID,RECIPIENT,AMOUNT`.
   - Instruction: transfer `AMOUNT` `TOKNE_ID` to `RECIPIENT`.
-  - example:
+  - example: for this example, then sender is `Account 4` and transfer to `Account 5`
 
     ```sh
-    node index.js -t SUBSTRATE,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b,100
+    node index.js -s 4
+    node index.js --transfer CHAIN2,SKYWALKER,0xa9e31273b72efcfb7a06b4236b76ba936106ec85caa63f730c2e1dd445cc3e23731aac26d2020c5883ee2c879a839d8f088419165373da7c4b8e666e18a21c41,100
     ```
 
 - Balance
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L222)
-  - CLI: `node index.js -b CHAIN_NAME,TOKEN_ID,ACCOUNT`.
+  - CLI: `node index.js --omniBalance CHAIN_NAME,TOKEN_ID,ACCOUNT`.
   - Instruction: query `ACCOUNT` balance of `TOKEN_ID`.
   - example:
 
     ```sh
-    node index.js -m SUBSTRATE,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
+    node index.js --omniBalance CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
     ```
 
 ### Omniverse Token Swap
 
-All operations are performed within the `omniverse-helper` directory.
+All operations are performed within the `omniverse-helper` directory. All operations are initiated by `Account 4`.
+
+```sh
+node index.js -s 4
+```
 
 - Users deposit to the swap platform
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L314)
-  - CLI: `node index.js -d CHAIN_NAME,TOKEN_ID,AMOUNT`.
+  - CLI: `node index.js --deposit CHAIN_NAME,TOKEN_ID,AMOUNT`.
   - Instruction: deposit `AMOUNT` `TOKEN_ID` into the swap.
-  - example:
+  - example: before deposit, we have minted `1001000 SKYWALKER` and `10000 EARTHWALKER` for `Account 4`
 
     ```sh
-    node index.js -d SUBSTRATE,SKYWALKER,1001000
+    node index.js -s 4
+    node index.js --deposit CHAIN2,SKYWALKER,1001000
+    node index.js --deposit CHAIN2,EARTHWALKER,10000
     ```
 
 - Create Token Pool or add liquidity
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L404)
-  - CLI: `node index.js -al CHAIN_NAME,TRADING_PAIR_ID,TOKNE_X_ID,TOKEN_X_AMOUNT,TOKEN_Y_ID,TOKEN_Y_AMOUT`.
+  - CLI: `node index.js --addLiquidity CHAIN_NAME,TRADING_PAIR_ID,TOKNE_X_ID,TOKEN_X_AMOUNT,TOKEN_Y_ID,TOKEN_Y_AMOUT`.
   - Instruction: if `TRADING_PAIR_ID` swap pool not exist than create, and add liquidity to `TRADING_PAIR_ID` swap pool.
   - example:
   
     ```sh
-    node index.js -d SUBSTRATE,SKYWALKER/SKYWALKER1,SKYWALKER,1000000,SKYWALKER1,10000
+    node index.js --addLiquidity CHAIN2,SKYWALKER/EARTHWALKER,SKYWALKER,1000000,EARTHWALKER,10000
     ```
 
-    **note:** before create token pool, you need have deposited a sufficient amount of `TOKNE_X_ID` and `TOKNE_Y_ID`. For this example, we have deposited `1001000 SKYWALKER` and `10000 SKYWALKER1`.
+    **note:** before create token pool, you need have deposited a sufficient amount of `TOKNE_X_ID` and `TOKNE_Y_ID`. For this example, we have deposited `1001000 SKYWALKER` and `10000 EARTHWALKER`.
 
 - Users make swap from `TOKEN_X_ID` to `TOKEN_Y_ID`
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L375)
-  - CLI: `node index.js -x2y CHAIN_NAME,TRADING_PAIR_ID,AMOUNT`.
+  - CLI: `node index.js --swapX2Y CHAIN_NAME,TRADING_PAIR_ID,AMOUNT`.
   - Instruction: swap `AMOUNT` `TOKEN_X` to get some `TOKEN_Y`.
   - example:
   
     ```sh
-    node index.js -x2y SUBSTRATE,SKYWALKER/SKYWALKER1,1000
+    node index.js --swapX2Y CHAIN2,SKYWALKER/EARTHWALKER,1000
     ```
 
 - Users make swap from `TOKEN_Y_ID` to `TOKEN_X_ID`
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L444)
-  - CLI: `node index.js -y2x CHAIN_NAME,TRADING_PAIR_ID,AMOUNT`.
+  - CLI: `node index.js --swapY2X CHAIN_NAME,TRADING_PAIR_ID,AMOUNT`.
   - Instruction: swap `AMOUNT` `TOKEN_Y` to get some `TOKEN_X`.
   - example:
   
     ```sh
-    node index.js -y2x SUBSTRATE,SKYWALKER/SKYWALKER1,10
+    node index.js --swapY2X CHAIN2,SKYWALKER/EARTHWALKER,10
     ```
 
 - Users withdraw from the swap platform
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L337)
-  - CLI: `node index.js -w CHAIN_NAME,TOKEN,AMOUNT`
+  - CLI: `node index.js --withdraw CHAIN_NAME,TOKEN,AMOUNT`
   - Instruction: withdraw `AMOUNT` `TOKEN_ID` from swap.
   - example:
   
     ```sh
-    node index.js -w SUBSTRATE,SKYWALKER,10
+    node index.js --withdraw CHAIN2,SKYWALKER,10
     ```
 
 - Users query the `TOKEN_ID` deposited balance in the swap
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L243)
-  - CLI: `node index.js -bs CHAIN_NAME,TOKEN_ID,ACCOUNT`
+  - CLI: `node index.js --balanceOfSwap CHAIN_NAME,TOKEN_ID,ACCOUNT`
   - Instruction: query the `TOKEN_ID` deposited balance in the swap of `ACCOUNT`
   - example:
 
     ```sh
-    node index.js -bs SUBSTRATE,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
+    node index.js --balanceOfSwap CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
     ```
+
+For all transaction operations, it is highly recommended to utilize the tool. The tool facilitates the generation of the signature required by Omniverse, and query results can be conveniently viewed through the browser of [polkadot{.js}](https://polkadot.js.org/).
+
+![secret](./assets/query%20assets.jpg)
