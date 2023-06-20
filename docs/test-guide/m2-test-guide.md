@@ -49,9 +49,10 @@ node src/index.js -i
 
 - Update the configures to the test environment
 
-  ```sh
-  git checkout config/default.json
-  ```
+    ```sh
+    cd omniverse-system-test
+    cp config/test.template.json config/default.json
+    ```
 
 ### Test of tokens
 
