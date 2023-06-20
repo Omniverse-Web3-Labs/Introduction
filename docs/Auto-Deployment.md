@@ -167,21 +167,21 @@ You can see outputs like this
 
 - View logs
 
-```
-sudo docker logs -f test-test
-```
+    ```
+    sudo docker logs -f test-test
+    ```
 
-You can see outputs like this
+    You can see outputs like this
 
-![](./assets/auto-deploy/docker%20logs.png)
+    ![](./assets/auto-deploy/docker%20logs.png)
 
 - Stop the synchronizer
 
-In the working directory, execute the following command
+    In the working directory, execute the following command
 
-```
-docker-compose down
-```
+    ```
+    docker-compose down
+    ```
 
 ## Note(Option) 
 
@@ -190,38 +190,41 @@ docker-compose down
 Open `omniverse-system-test/config/default.json`
 
 - **tokenInfo**
-`tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as you want.
 
-```
-"tokenInfo": {
-        "token": [{
-            "name": "SKYWALKER",
-            "symbol": "SKYWALKER"
-        }, {
-            "name": "EARTHWALKER",
-            "symbol": "EARTHWALKER"
-        }]
-    },
-```
+    `tokenInfo` is the token information of the omniverse tokens you will deploy, you can change it as you want.
 
-When deploying contracts, token names will be picked from the field `tokenInfo`. If the number of the contracts to be deployed is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
+    ```
+    "tokenInfo": {
+            "token": [{
+                "name": "SKYWALKER",
+                "symbol": "SKYWALKER"
+            }, {
+                "name": "EARTHWALKER",
+                "symbol": "EARTHWALKER"
+            }]
+        },
+    ```
+
+    When deploying contracts, token names will be picked from the field `tokenInfo`. If the number of the contracts to be deployed is larger than the array size of `tokenInfo`, token name will derived from the last token name by adding a suffix, such as `SKYWALKER1`.
 
 - **networks**
-`networks` contains the chains on which you will deploy omniverse tokens
 
-- rpc(only for deployment): `http` end point of a node connected to the network
-- ws(only for deployment): `websocket` end point of a node connected to the network
-- chainType: What kind of chain you will deploy omniverse token on, currently you can choose: EVM, INK, SUBSTRATE
-- omniverseChainId(only for deployment): The omniverse chain id is set for all public chains, namely each chain will have a unique omniverse chain id. Currently, you can set any id the this field, just keep it unique in the configuration.
-- coolingDown: Cooling down time, the interval between two omniverse transactions, just let what it is if you use local nodes.
-- chainId(only for deployment): The field is the EVM chain id, so it is only used when the chain type is `EVM`.
-- chainName(only for deployment): The chain name you assign to the chain.
+    `networks` contains the chains on which you will deploy omniverse tokens
+
+    - rpc(only for deployment): `http` end point of a node connected to the network
+    - ws(only for deployment): `websocket` end point of a node connected to the network
+    - chainType: What kind of chain you will deploy omniverse token on, currently you can choose: EVM, INK, SUBSTRATE
+    - omniverseChainId(only for deployment): The omniverse chain id is set for all public chains, namely each chain will have a unique omniverse chain id. Currently, you can set any id the this field, just keep it unique in the configuration.
+    - coolingDown: Cooling down time, the interval between two omniverse transactions, just let what it is if you use local nodes.
+    - chainId(only for deployment): The field is the EVM chain id, so it is only used when the chain type is `EVM`.
+    - chainName(only for deployment): The chain name you assign to the chain.
 
 - **accounts**
 
-- It is optional
-- If it is absent, 10 built-in test accounts will be used
-- If the field is set, such as `"accounts": "./config/.secret"`, it indicates secret keys are stored in `./config/.secret`. [This](https://github.com/Omniverse-Web3-Labs/omniverse-system-test/tree/milestone-2/config/.secret.template) is a template of the secret key file. **Make sure that there are enough tokens in these accounts before deploying contracts**.
+    It indicates in which file the secret keys are stored.
+    - It is optional
+    - If it is absent, 10 built-in test accounts will be used
+    - If the field is set, such as `"accounts": "./config/.secret"`, it indicates secret keys are stored in `./config/.secret`. [Here](https://github.com/Omniverse-Web3-Labs/omniverse-system-test/tree/milestone-2/config/.secret.template) is a template of the secret key file. **Make sure that there are enough tokens in these accounts before deploying contracts**.
 
 ### Launch more auto-synchronizers
 
@@ -237,32 +240,32 @@ There are only four additional steps to deploy contracts on live EVM chains
 
 1. Prepare two accounts with tokens
 2. Add a field `accounts` in `omniverse-system-test/config/default.json`
-```
-"accounts": "./config/.secret"
-```
+    ```
+    "accounts": "./config/.secret"
+    ```
 3. Add a secret key file `.secret` in the directory `config`, and input private keys in the file
-```
-[
-    "<OWNER_PRIVATE_KEY>",
-    "<PORTER_PRIVATE_KEY>"
-]
-```
-- The format of the private key is like this `0xb97de1848f97378ee439b37e776ffe11a2fff415b2f93dc240b2d16e9c18xxxx`
-- `<OWNER_PRIVATE_KEY>` is used to deploy contracts
-- `<PORTER_PRIVATE_KEY>` is used in the synchronizer to synchronize omniverse transactions
+    ```
+    [
+        "<OWNER_PRIVATE_KEY>",
+        "<PORTER_PRIVATE_KEY>"
+    ]
+    ```
+    - The format of the private key is like this `0xb97de1848f97378ee439b37e776ffe11a2fff415b2f93dc240b2d16e9c18xxxx`
+    - `<OWNER_PRIVATE_KEY>` is used to deploy contracts
+    - `<PORTER_PRIVATE_KEY>` is used in the synchronizer to synchronize omniverse transactions
 
 4. Change the field `networks` in `omniverse-system-test/config/default.json`
 
-For example, to deploy on Ethereum
-```
-"networks": [
-        {
-            "rpc": "https://eth.llamarpc.com",
-            "ws": "wss://eth.llamarpc.com",
-            "chainId": 1,
-            "chainType": "EVM",
-            "coolingDown": 10,
-            "chainName": "ETHEREUM"
-        }
-    ],
-```
+    For example, to deploy on Ethereum
+    ```
+    "networks": [
+            {
+                "rpc": "https://eth.llamarpc.com",
+                "ws": "wss://eth.llamarpc.com",
+                "chainId": 1,
+                "chainType": "EVM",
+                "coolingDown": 10,
+                "chainName": "ETHEREUM"
+            }
+        ],
+    ```
