@@ -176,3 +176,35 @@ All operations are performed within the `omniverse-helper` directory. All operat
 For all transaction operations, it is highly recommended to utilize the tool. The tool facilitates the generation of the signature required by Omniverse, and query results can be conveniently viewed through the browser of [polkadot{.js}](https://polkadot.js.org/).
 
 ![secret](./assets/query%20assets.jpg)
+
+## Ink! contract query balance in the explorer
+
+After deployment, you can get the Ink! contract address in synchronizer config file.
+
+```sh
+cat omniverse-system-test/submodules/omniverse-synchronizer/config/default.json
+```
+
+The contract `abi` in the `omniverse-system-test/res/ink/`
+
+Locate the networks and check if `ink` is listed as a compatibleChain. If it is, the omniverseContractAddress should correspond to the address of the Ink! contract，as shown following:
+
+![image](./assets/ink%20contract%20address.png)
+
+Open [polkadot{.js}](https://polkadot.js.org/) switch to Ink! parachain that deployed [Auto-Deployment](./Auto-Deployment.md).
+
+![image](./assets/switch%20to%20ink%20parachain.png)
+
+Step to `Develop -> Contracts -> Add an existing contract`.
+
+![image](./assets/developer%20contracts.png)
+
+Add `SKYWALKER` contract
+
+![image](./assets/import%20contract.png)
+
+Upon adding the "SKYWALKER" token, you can proceed to query the account balance.
+
+![image](./assets/ink%20contract%20balanceOf.png)
+
+![image](./assets/ink%20call%20balanceOf.png)
