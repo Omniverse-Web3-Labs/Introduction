@@ -1,6 +1,9 @@
 # Test Guide for Milestone 2 from the W3F Grants
 
-This document will show you how to test O-DLT.
+This document will show you how to test O-DLT. Here are two videos to show the workflow:  
+
+- [The test of omniverse tokens](https://omniversedlt.s3.amazonaws.com/token-swap-test/token-test.mp4)  
+- [The test of omniverse swap](https://omniversedlt.s3.amazonaws.com/token-swap-test/swap-test.mp4)  
 
 The [system test tool](https://github.com/Omniverse-Web3-Labs/omniverse-system-test/tree/milestone-2) is used to make the e2e test for the O-DLT.
 
