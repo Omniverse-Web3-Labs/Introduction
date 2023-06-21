@@ -1,6 +1,8 @@
 # Auto-Deployment
 
-From this tutorial, you can learn how to deploy an Omniverse token and launch the synchronizer.
+From this tutorial, you can learn how to deploy an Omniverse token and launch the synchronizer.  
+
+Here is an [deployment video](https://omniversedlt.s3.amazonaws.com/auto-deploy-tutorial/Auto-Deployment.mp4) to show how to deploy your own `O-DLT` on different chains automatically.  
 
 - [Prerequisites](#prerequisites)
 - [Launch local chains with Docker](#install-and-start-the-parachains-and-evm-chain-locally-for-o-dlt-token)
