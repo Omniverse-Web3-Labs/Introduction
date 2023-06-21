@@ -2,6 +2,14 @@
 
 This guide descripes how to make omniverse operations with the omniverse CLI tools, and the code in the CLI tool is a basis for developers to build their `O-DLT` dApps.  
 
+The content includes:  
+- [Prepare the operation tools](#operations-and-codes)
+- [Prepare Operation Accounts](#prepare-operation-accounts)
+- [Check Operation accounts](#check-operation-accounts)
+- [Example of Making Omniverse Transactions](#make-omniverse-transactions)
+- [Example of Making Omniverse Token Swap](#make-omniverse-token-swap)
+- [Some convenience by `Polkadotjs`](#ink-contract-query-balance-in-the-explorer)
+
 ## Operations and Codes
 
 Before commencing this tutorial, you should have generated a minimum of `O-DLT` token. To perform swap, you will need at least two `O-DLT` tokens. Now we have created two `O-DLT` tokens by [Auto-Deployment](./Auto-Deployment.md), the tokens id are `SKYWALKER` and `EARTHWALKER` respectively. After deployment, The following chains will be installed and launched locally with rpc addresses:
@@ -14,15 +22,18 @@ Before commencing this tutorial, you should have generated a minimum of `O-DLT` 
 
 Command-line tool:
 
+We suppose you have cloned the [the tools repository `omniverse-system-test`](./Auto-Deployment.md#clone-the-tools-repository) and updated the submodules.  
+
 ```sh
 cd omniverse-system-test/submodules/omniverse-swap-tools/omniverse-helper
 ```
 
-### Create Accounts
+### Prepare Operation Accounts
 
-- You can create your omniverse accounts and get some gas tokens like [this](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/blob/main/docs/Manually-Tutorial.md#create-account).
+- If the deployment and operating is just locally, it is automatically generating `10` operation accounts during [deployment](./Auto-Deployment.md), the details of which could be found at [show all accounts](#show-all-accounts). **In this case you need to do nothing.**  
+- In practice, we deploy smart contracts on public `Ink!` chains like `Astar` and on public EVM chains like `Ethereum`. You need to create your omniverse accounts and get some gas tokens from the related public faucets. We won't describe the details in this tutorial, and you can easily find related information on `google`.  
 
-### Show all accounts
+### Check Operation accounts
 
 You can utilize the following command to display all the available accounts you can use. For the purpose of testing, a variety of accounts have been made available. `Account 0` is the owner of Omniverse token, `Account 1` serves as the synchronizer, `Account 2` is for swap operations, and while the remaining accounts are general users.
 
@@ -45,7 +56,7 @@ EVM address 0xc0d8F541Ab8B71F20c10261818F2F401e8194049
 ...
 ```
 
-### Omniverse Transactions
+### Make Omniverse Transactions
 
 All operations are performed within the `omniverse-helper` directory. Sender private key in file `.secret`.
 
@@ -87,7 +98,7 @@ All operations are performed within the `omniverse-helper` directory. Sender pri
     node index.js --omniBalance CHAIN2,SKYWALKER,0x8bb25caae0a466afde04833610cf0c998050693974188853bdb982ed60e5e08ee71b3c9c0f900f8191512787e47908277272f71f991cb15fa364bad8018ef40b
     ```
 
-### Omniverse Token Swap
+### Make Omniverse Token Swap
 
 All operations are performed within the `omniverse-helper` directory. All operations are initiated by `Account 4`.
 

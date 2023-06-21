@@ -58,7 +58,7 @@ We use the [system test tool](https://github.com/Omniverse-Web3-Labs/omniverse-s
 
 ### Installation
 
-#### Clone the repository
+#### Clone the tools repository
 
 ```sh
 git clone -b milestone-2 --recursive https://github.com/Omniverse-Web3-Labs/omniverse-system-test.git
