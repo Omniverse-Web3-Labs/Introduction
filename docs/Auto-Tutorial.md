@@ -116,6 +116,9 @@ All operations are performed within the `omniverse-helper` directory. All operat
 - Create Token Pool or add liquidity
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/main/omniverse-helper/index.js#L404)
   - CLI: `node index.js --addLiquidity CHAIN_NAME,TRADING_PAIR_ID,TOKNE_X_ID,TOKEN_X_AMOUNT,TOKEN_Y_ID,TOKEN_Y_AMOUT`
+    - `TRADING_PAIR_ID` is the pool name (`SKYWALKER/EARTHWALKER` in the example below)
+    - `TOKNE_X_ID` is the first token in of the token pair in the pool (`SKYWALKER` in the example below)
+    - `TOKEN_Y_ID` is the second token in of the token pair in the pool (`EARTHWALKER` in the example below)
   - Instruction: if `TRADING_PAIR_ID` swap pool not exist than create, and add liquidity to `TRADING_PAIR_ID` swap pool.
   - example:
   
@@ -129,6 +132,7 @@ All operations are performed within the `omniverse-helper` directory. All operat
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L375)
   - CLI: `node index.js --swapX2Y CHAIN_NAME,TRADING_PAIR_ID,AMOUNT`.
   - Instruction: swap `AMOUNT` `TOKEN_X` to get some `TOKEN_Y`.
+  - `--swapX2Y` means using `TOKEN_X` and to get `TOKEN_Y` (using `SKYWALKER` and to get `EARTHWALKER` in the example below): 
   - example:
   
     ```sh
@@ -139,10 +143,10 @@ All operations are performed within the `omniverse-helper` directory. All operat
   - [Source Code](https://github.com/Omniverse-Web3-Labs/omniverse-swap-tools/blob/milestone-2/omniverse-helper/index.js#L444)
   - CLI: `node index.js --swapY2X CHAIN_NAME,TRADING_PAIR_ID,AMOUNT`.
   - Instruction: swap `AMOUNT` `TOKEN_Y` to get some `TOKEN_X`.
-  - example:
+  - `--swapY2X` means using `TOKEN_Y` and to get `TOKEN_X` (using `EARTHWALKER` and to get `SKYWALKER` in the example below):  
   
     ```sh
-    node index.js --swapY2X CHAIN2,SKYWALKER/EARTHWALKER,10
+    node index.js --swapY2X CHAIN2,SKYWALKER/EARTHWALKER,500
     ```
 
 - Users query the `TOKEN_ID` balance in the swap
