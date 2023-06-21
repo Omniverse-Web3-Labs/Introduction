@@ -2,6 +2,8 @@
 
 This guide descripes how to make omniverse operations with the omniverse CLI tools, and the code in the CLI tool is a basis for developers to build their `O-DLT` dApps.  
 
+Here is an [operation video]() to show how to use your own deployed `O-DLT` tokens and make swaps of them.  
+
 The content includes:  
 - [Prepare the operation tools](#operations-and-codes)
 - [Prepare Operation Accounts](#prepare-operation-accounts)
