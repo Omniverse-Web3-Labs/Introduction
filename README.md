@@ -2,6 +2,7 @@
 
 ## Index
 
+- [Ecosystems Supported](#ecosystems-supported)
 - [Proposals](#proposals)
 - [Grants](#grants)
 
