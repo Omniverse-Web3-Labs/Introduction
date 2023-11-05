@@ -9,7 +9,7 @@
 
 <p align='center' id='architecture'>Figure.1 Architecture</p> 
 
-![image](https://user-images.githubusercontent.com/83746881/225183344-a7883ae8-fa5d-48d3-b8ec-cb9231114399.png)  
+![image](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/assets/83746881/91f7d762-575e-48a2-999e-0e62096e500a)
 
 The Omniverse DLT is a new **application-level** (ERC) token protocol built upon multiple existing L1 public chains, enabling asset-related operations such as transfers and receptions running **globally** and **synchronously** over different consensus spaces.
 
@@ -25,13 +25,11 @@ The core of `O-DLT` is **synchronization** instead of **bridge-transferring**, e
 
 ## Rationale
 
-
-
 With `O-DLT`, we can create a global token protocol, that leverages smart contracts or similar mechanisms on existing blockchains to record the token states synchronously. The synchronization could be made by trustless off-chain synchronizers.  
 
 ### Architecture
 
-As shown in [Figure.1](#architecture), smart contracts deployed on multi-chains execute `o-transactions` of `O-DLT` tokens synchronously through the trustless off-chain synchronizers.   
+As shown in [Figure.1](#overview), smart contracts deployed on multi-chains execute `o-transactions` of `O-DLT` tokens synchronously through the trustless off-chain synchronizers.   
 
 - The `O-DLT` smart contracts are referred to as **Abstract Nodes**. The states recorded by the Abstract Nodes that are deployed on different blockchains respectively could be considered as copies of the global state, and they are ultimately consistent.  
 - **Synchronizer** is an off-chain execution program responsible for carrying published  `o-transactions` from the `O-DLT` smart contracts on one blockchain to the others. The synchronizers work trustless as they just deliver `o-transactions` with others' signatures, and details could be found in the [workflow](#workflow).
@@ -76,13 +74,14 @@ The `Account System` on `Flow` is a typical example.
 - `Flow` has a built-in mechanism for `account address => pk`. The public key can be bound to an account (a special built-in data structure) and the public key can be got from the `account address` directly.  
 - A mapping from `pk` to the `account address` on Flow can be built by creating a mapping `{String: Address}`, in which `String` denotes the data type to express the public key and the `Address` is the data type of the `account address` on Flow.  
 
-### Implementations
+### Ecosystems Supported
 
 - [Ethereum (EVMs)](https://github.com/Omniverse-Web3-Labs/omniverse-evm)
+- `Bitcoin`: the ERC-6358 style token is implemented by the `Ordinals`, in details of which is derived from `BRC-20`/`BRC-721` protocol. The example of ERC-6358 protocol on `BTC` can be found at the [Ordinals Explorer of the `BTC` testnet](https://testnet.ordinals.com/inscription/22267e023cf23ebe0e7275d662743e884bfa5c33276eb5e642539208f9362294i0)  
 - Polkadot
   - [Pallet](https://github.com/Omniverse-Web3-Labs/omniverse-swap)
-  - `Ink!`: Under development
- - [Flow](https://github.com/Omniverse-Web3-Labs/omniverse-flow)
+  - [`Ink!`](https://github.com/Omniverse-Web3-Labs/omniverse-ink)
+- [Flow](https://github.com/Omniverse-Web3-Labs/omniverse-flow)
 
 ## Security Considerations
 
