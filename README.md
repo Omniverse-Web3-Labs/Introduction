@@ -133,6 +133,7 @@ The two roles might be where the attack happens:
 ## Demo
 
 - [Demo Video](https://o20k.s3.us-west-2.amazonaws.com/omniverse-swap.mp4)
+- [Demo for BTC based on zk and ordinals](https://omniversedlt.s3.amazonaws.com/omniverse/zk-6358-ordinals.mp4)
 
 ## Proposals
 
