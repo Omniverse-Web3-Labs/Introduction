@@ -10,7 +10,7 @@
 
 <p align='center' id='architecture'>Figure.1 Architecture</p> 
 
-![image](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/assets/83746881/91f7d762-575e-48a2-999e-0e62096e500a)
+![image](https://github.com/Omniverse-Web3-Labs/Omniverse-DLT-Introduction/assets/83746881/352a2c16-baa0-4552-909c-372d1e7b6eed)
 
 The Omniverse DLT is a new **application-level** (ERC) token protocol built upon multiple existing L1 public chains, enabling asset-related operations such as transfers and receptions running **globally** and **synchronously** over different consensus spaces.
 
