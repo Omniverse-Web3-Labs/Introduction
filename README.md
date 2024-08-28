@@ -138,6 +138,7 @@ The two roles might be where the attack happens:
 ## Proposals
 
 - [ERC-6358](https://eips.ethereum.org/EIPS/eip-6358)
+- [BTC-Proposal](https://github.com/Omniverse-Web3-Labs/bitcoin-proposals)
 
 ## Grants
 
